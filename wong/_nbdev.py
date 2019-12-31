@@ -4,7 +4,7 @@ __all__ = ["index", "modules", "custom_doc_links", "git_url"]
 
 index = {}
 
-modules = []
+modules = ["core.py"]
 
 git_url = "https://github.com/keepsimpler/wong/tree/master/"
 
