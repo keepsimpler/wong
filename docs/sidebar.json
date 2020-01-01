@@ -1,7 +1,7 @@
 {
   "wong": {
     "Overview": "/",
-    "All the basic functions and classes": "/core",
+    "Core": "/core",
     "Enclose operations in nodes": "/nodes"
   }
 }

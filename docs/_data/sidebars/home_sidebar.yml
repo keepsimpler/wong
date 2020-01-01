@@ -10,7 +10,7 @@ entries:
       title: Overview
       url: /
     - output: web,pdf
-      title: All the basic functions and classes
+      title: Core
       url: /core
     - output: web,pdf
       title: Enclose operations in nodes
