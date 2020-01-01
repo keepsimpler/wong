@@ -2,6 +2,7 @@
   "wong": {
     "Overview": "/",
     "Core": "/core",
-    "Configuration": "/config"
+    "Configuration": "/config",
+    "Graph": "/graph"
   }
 }

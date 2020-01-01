@@ -15,7 +15,8 @@ index = {"OprtType": "00_core.ipynb",
          "IdentityMapping": "00_core.ipynb",
          "Classifier": "00_core.ipynb",
          "init_cnn": "00_core.ipynb",
-         "num_params": "00_core.ipynb"}
+         "num_params": "00_core.ipynb",
+         "cfg": "01_config.ipynb"}
 
 modules = ["core.py",
            "graph.py"]

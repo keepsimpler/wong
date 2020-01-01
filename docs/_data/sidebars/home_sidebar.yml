@@ -15,6 +15,9 @@ entries:
     - output: web,pdf
       title: Configuration
       url: /config
+    - output: web,pdf
+      title: Graph
+      url: /graph
     output: web
     title: wong
   output: web
