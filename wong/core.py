@@ -11,8 +11,12 @@ from .imports import *
 from enum import Enum
 
 # Cell
-"Operator types.`Nothing` means not any operator there."
-OprtType = Enum('OprtType', ('Nothing', 'Conv2d', 'ReLU', 'BatchNorm2d'))
+class OprtType(Enum):
+    "Operator types.`Nothing` means not any operator there."
+    Nothing = 0
+    Conv2d  = 1
+    ReLU = 2
+    BatchNorm2d = 3
 
 # Cell
 def conv_unit(ni:int, no:int, seq:tuple, ks:int=3, stride:int=1, groups:int=1, zero_bn:bool=False, act_inplace=False):
@@ -20,7 +24,6 @@ def conv_unit(ni:int, no:int, seq:tuple, ks:int=3, stride:int=1, groups:int=1, z
     The basic convolutional operation, which is combination of operators such as conv, bn, relu, etc.
 
     Parameters:
-    -----------
     ni : number of input channels
     no : number of output channels
     seq : sequence of operators, a tuple of `OprtType` variables
@@ -31,7 +34,6 @@ def conv_unit(ni:int, no:int, seq:tuple, ks:int=3, stride:int=1, groups:int=1, z
     act_inplace : does do the activations in-place.
 
     Return:
-    -------
     a nn.Sequential object
 
     """
@@ -69,7 +71,6 @@ def resnet_basicblock(ni, no, nh, stride:int=1):
     Basic Unit in Residual Networks
 
     Reference:
-    ----------
     Deep Residual Learning for Image Recognition:
     https://arxiv.org/abs/1512.03385
     """
@@ -81,7 +82,6 @@ def resnet_bottleneck(ni, no, nh, stride:int=1, groups:int=1, zero_bn=True):
     Bottleneck Unit in Residual Networks
 
     Reference:
-    ----------
     Deep Residual Learning for Image Recognition:
     https://arxiv.org/abs/1512.03385
     """
@@ -95,7 +95,6 @@ def xception(ni:int, no:int, nh:int, ks:int=3, stride:int=1, zero_bn:bool=False)
     Basic unit in xception networks.
 
     Reference:
-    ----------
     Xception: Deep Learning with Depthwise Separable Convolutions:
     https://arxiv.org/abs/1610.02357
     """
