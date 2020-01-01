@@ -22,20 +22,6 @@ class OprtType(Enum):
 def conv_unit(ni:int, no:int, seq:tuple, ks:int=3, stride:int=1, groups:int=1, zero_bn:bool=False, act_inplace=False):
     """
     The basic convolutional operation, which is combination of operators such as conv, bn, relu, etc.
-
-    Parameters:
-    ni : number of input channels
-    no : number of output channels
-    seq : sequence of operators, a tuple of `OprtType` variables
-    ks : kernel size of conv operator
-    stride : stride size of conv operator
-    groups : number of groups of conv operator
-    zero_bn : does initialize zero value for weight of batch norm operator
-    act_inplace : does do the activations in-place.
-
-    Return:
-    a nn.Sequential object
-
     """
     unit = []
     has_conv = False # if has conv operator
@@ -138,8 +124,9 @@ class IdentityMapping(nn.Module):
 class Classifier(nn.Module):
     """
     Usually work as the final operator for image processing (classification, object detection, etc.)
+
     Including:
-    an average pooling op, which downsampling image resolution to 1x1
+    an average pooling op, which downsampling image resolution to 1x1.
     a linear op, which perform classification.
     """
     def __init__(self, ni, no):
@@ -154,8 +141,8 @@ class Classifier(nn.Module):
         return out
 
 # Cell
-# copy from https://github.com/fastai/fastai/blob/master/fastai/vision/models/xresnet.py
 def init_cnn(m):
+    "copy from https://github.com/fastai/fastai/blob/master/fastai/vision/models/xresnet.py"
     if getattr(m, 'bias', None) is not None: nn.init.constant_(m.bias, 0)
     if isinstance(m, (nn.Conv2d,nn.Linear)): nn.init.kaiming_normal_(m.weight)
     for l in m.children(): init_cnn(l)

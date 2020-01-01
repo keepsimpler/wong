@@ -59,21 +59,6 @@ summary: "All the basic functions and classes"
 
 </div>
 <div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># #export</span>
-<span class="c1"># &quot;Operator types.`Nothing` means not any operator there.&quot;</span>
-<span class="c1"># OprtType = Enum(&#39;OprtType&#39;, (&#39;Nothing&#39;, &#39;Conv2d&#39;, &#39;ReLU&#39;, &#39;BatchNorm2d&#39;))</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
 
 </div>
 <div class="cell border-box-sizing code_cell rendered">
@@ -88,17 +73,6 @@ summary: "All the basic functions and classes"
 <h4 id="conv_unit" class="doc_header"><code>conv_unit</code><a href="https://github.com/keepsimpler/wong/tree/master/wong/core.py#L22" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>conv_unit</code>(<strong><code>ni</code></strong>:<code>int</code>, <strong><code>no</code></strong>:<code>int</code>, <strong><code>seq</code></strong>:<code>tuple</code>, <strong><code>ks</code></strong>:<code>int</code>=<em><code>3</code></em>, <strong><code>stride</code></strong>:<code>int</code>=<em><code>1</code></em>, <strong><code>groups</code></strong>:<code>int</code>=<em><code>1</code></em>, <strong><code>zero_bn</code></strong>:<code>bool</code>=<em><code>False</code></em>, <strong><code>act_inplace</code></strong>=<em><code>False</code></em>)</p>
 </blockquote>
 <p>The basic convolutional operation, which is combination of operators such as conv, bn, relu, etc.</p>
-<p>Parameters:
-ni : number of input channels
-no : number of output channels
-seq : sequence of operators, a tuple of <a href="core.html#OprtType"><code>OprtType</code></a> variables
-ks : kernel size of conv operator
-stride : stride size of conv operator
-groups : number of groups of conv operator
-zero_bn : does initialize zero value for weight of batch norm operator
-act_inplace : does do the activations in-place.</p>
-<p>Return:
-a nn.Sequential object</p>
 
 </div>
 
@@ -107,6 +81,27 @@ a nn.Sequential object</p>
 </div>
 </div>
 
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Parameters:</p>
+<ul>
+<li><code>ni</code> : number of input channels</li>
+<li><code>no</code> : number of output channels</li>
+<li><code>seq</code> : sequence of operators, a tuple of <a href="core.html#OprtType"><code>OprtType</code></a> operator types</li>
+<li><code>ks</code> : kernel size of conv operator</li>
+<li><code>stride</code> : stride size of conv operator</li>
+<li><code>groups</code> : number of groups of conv operator</li>
+<li><code>zero_bn</code> : does initialize zero value for weight of batch norm operator</li>
+<li><code>act_inplace</code> : does do the activations in-place.</li>
+</ul>
+<p>Return:</p>
+<ul>
+<li>a nn.Sequential object</li>
+</ul>
+
+</div>
+</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 
@@ -123,7 +118,7 @@ a nn.Sequential object</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="resnet_basicblock" class="doc_header"><code>resnet_basicblock</code><a href="https://github.com/keepsimpler/wong/tree/master/wong/core.py#L69" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>resnet_basicblock</code>(<strong><code>ni</code></strong>, <strong><code>no</code></strong>, <strong><code>nh</code></strong>, <strong><code>stride</code></strong>:<code>int</code>=<em><code>1</code></em>)</p>
+<h4 id="resnet_basicblock" class="doc_header"><code>resnet_basicblock</code><a href="https://github.com/keepsimpler/wong/tree/master/wong/core.py#L55" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>resnet_basicblock</code>(<strong><code>ni</code></strong>, <strong><code>no</code></strong>, <strong><code>nh</code></strong>, <strong><code>stride</code></strong>:<code>int</code>=<em><code>1</code></em>)</p>
 </blockquote>
 <p>Basic Unit in Residual Networks</p>
 <p>Reference:
@@ -147,7 +142,7 @@ Deep Residual Learning for Image Recognition:
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="resnet_bottleneck" class="doc_header"><code>resnet_bottleneck</code><a href="https://github.com/keepsimpler/wong/tree/master/wong/core.py#L80" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>resnet_bottleneck</code>(<strong><code>ni</code></strong>, <strong><code>no</code></strong>, <strong><code>nh</code></strong>, <strong><code>stride</code></strong>:<code>int</code>=<em><code>1</code></em>, <strong><code>groups</code></strong>:<code>int</code>=<em><code>1</code></em>, <strong><code>zero_bn</code></strong>=<em><code>True</code></em>)</p>
+<h4 id="resnet_bottleneck" class="doc_header"><code>resnet_bottleneck</code><a href="https://github.com/keepsimpler/wong/tree/master/wong/core.py#L66" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>resnet_bottleneck</code>(<strong><code>ni</code></strong>, <strong><code>no</code></strong>, <strong><code>nh</code></strong>, <strong><code>stride</code></strong>:<code>int</code>=<em><code>1</code></em>, <strong><code>groups</code></strong>:<code>int</code>=<em><code>1</code></em>, <strong><code>zero_bn</code></strong>=<em><code>True</code></em>)</p>
 </blockquote>
 <p>Bottleneck Unit in Residual Networks</p>
 <p>Reference:
@@ -174,7 +169,7 @@ Deep Residual Learning for Image Recognition:
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="xception" class="doc_header"><code>xception</code><a href="https://github.com/keepsimpler/wong/tree/master/wong/core.py#L93" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>xception</code>(<strong><code>ni</code></strong>:<code>int</code>, <strong><code>no</code></strong>:<code>int</code>, <strong><code>nh</code></strong>:<code>int</code>, <strong><code>ks</code></strong>:<code>int</code>=<em><code>3</code></em>, <strong><code>stride</code></strong>:<code>int</code>=<em><code>1</code></em>, <strong><code>zero_bn</code></strong>:<code>bool</code>=<em><code>False</code></em>)</p>
+<h4 id="xception" class="doc_header"><code>xception</code><a href="https://github.com/keepsimpler/wong/tree/master/wong/core.py#L79" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>xception</code>(<strong><code>ni</code></strong>:<code>int</code>, <strong><code>no</code></strong>:<code>int</code>, <strong><code>nh</code></strong>:<code>int</code>, <strong><code>ks</code></strong>:<code>int</code>=<em><code>3</code></em>, <strong><code>stride</code></strong>:<code>int</code>=<em><code>1</code></em>, <strong><code>zero_bn</code></strong>:<code>bool</code>=<em><code>False</code></em>)</p>
 </blockquote>
 <p>Basic unit in xception networks.</p>
 <p>Reference:
@@ -207,7 +202,7 @@ Xception: Deep Learning with Depthwise Separable Convolutions:
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="IdentityMapping" class="doc_header"><code>class</code> <code>IdentityMapping</code><a href="https://github.com/keepsimpler/wong/tree/master/wong/core.py#L106" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>IdentityMapping</code>(<strong><code>ni</code></strong>:<code>int</code>, <strong><code>no</code></strong>:<code>int</code>, <strong><code>stride</code></strong>:<code>int</code>=<em><code>1</code></em>, <strong><code>pooling_type</code></strong>:<code>str</code>=<em><code>'max'</code></em>) :: <code>Module</code></p>
+<h2 id="IdentityMapping" class="doc_header"><code>class</code> <code>IdentityMapping</code><a href="https://github.com/keepsimpler/wong/tree/master/wong/core.py#L92" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>IdentityMapping</code>(<strong><code>ni</code></strong>:<code>int</code>, <strong><code>no</code></strong>:<code>int</code>, <strong><code>stride</code></strong>:<code>int</code>=<em><code>1</code></em>, <strong><code>pooling_type</code></strong>:<code>str</code>=<em><code>'max'</code></em>) :: <code>Module</code></p>
 </blockquote>
 <p>Identity Mapping between input and output, four cases:</p>
 <ol>
@@ -247,11 +242,11 @@ maxpool or avgpool</li>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="Classifier" class="doc_header"><code>class</code> <code>Classifier</code><a href="https://github.com/keepsimpler/wong/tree/master/wong/core.py#L138" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>Classifier</code>(<strong><code>ni</code></strong>, <strong><code>no</code></strong>) :: <code>Module</code></p>
+<h2 id="Classifier" class="doc_header"><code>class</code> <code>Classifier</code><a href="https://github.com/keepsimpler/wong/tree/master/wong/core.py#L124" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>Classifier</code>(<strong><code>ni</code></strong>, <strong><code>no</code></strong>) :: <code>Module</code></p>
 </blockquote>
-<p>Usually work as the final operator for image processing (classification, object detection, etc.)
-Including:
-an average pooling op, which downsampling image resolution to 1x1
+<p>Usually work as the final operator for image processing (classification, object detection, etc.)</p>
+<p>Including:
+an average pooling op, which downsampling image resolution to 1x1.
 a linear op, which perform classification.</p>
 
 </div>
@@ -280,8 +275,9 @@ a linear op, which perform classification.</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="init_cnn" class="doc_header"><code>init_cnn</code><a href="https://github.com/keepsimpler/wong/tree/master/wong/core.py#L158" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>init_cnn</code>(<strong><code>m</code></strong>)</p>
+<h4 id="init_cnn" class="doc_header"><code>init_cnn</code><a href="https://github.com/keepsimpler/wong/tree/master/wong/core.py#L144" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>init_cnn</code>(<strong><code>m</code></strong>)</p>
 </blockquote>
+<p>copy from <a href="https://github.com/fastai/fastai/blob/master/fastai/vision/models/xresnet.py">https://github.com/fastai/fastai/blob/master/fastai/vision/models/xresnet.py</a></p>
 
 </div>
 
@@ -303,7 +299,7 @@ a linear op, which perform classification.</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="num_params" class="doc_header"><code>num_params</code><a href="https://github.com/keepsimpler/wong/tree/master/wong/core.py#L165" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>num_params</code>(<strong><code>net</code></strong>:<code>Module</code>)</p>
+<h4 id="num_params" class="doc_header"><code>num_params</code><a href="https://github.com/keepsimpler/wong/tree/master/wong/core.py#L152" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>num_params</code>(<strong><code>net</code></strong>:<code>Module</code>)</p>
 </blockquote>
 <p>Number of parameters of a neural network</p>
 
