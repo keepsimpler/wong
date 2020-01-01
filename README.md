@@ -8,9 +8,9 @@
 
 -->
 
-# Project name here
+# Combine Complex Networks with Neural networks
 
-> Summary description here.
+> This project try to apply the theory of complex networks to neural networks.The neural networks are considered as instances of networked systems.
 
 
 This file will become your README and also the index of your documentation.
