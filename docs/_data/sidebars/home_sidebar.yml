@@ -13,8 +13,8 @@ entries:
       title: Core
       url: /core
     - output: web,pdf
-      title: Enclose operations in nodes
-      url: /nodes
+      title: Configuration
+      url: /config
     output: web
     title: wong
   output: web

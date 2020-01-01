@@ -17,7 +17,8 @@ index = {"OprtType": "00_core.ipynb",
          "init_cnn": "00_core.ipynb",
          "num_params": "00_core.ipynb"}
 
-modules = ["core.py"]
+modules = ["core.py",
+           "graph.py"]
 
 git_url = "https://github.com/keepsimpler/wong/tree/master/"
 

@@ -2,6 +2,6 @@
   "wong": {
     "Overview": "/",
     "Core": "/core",
-    "Enclose operations in nodes": "/nodes"
+    "Configuration": "/config"
   }
 }
