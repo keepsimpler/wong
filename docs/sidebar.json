@@ -3,6 +3,7 @@
     "Overview": "/",
     "Core": "/core",
     "Configuration": "/config",
-    "Graph": "/graph"
+    "Graph": "/graph",
+    "Title": "/network"
   }
 }
