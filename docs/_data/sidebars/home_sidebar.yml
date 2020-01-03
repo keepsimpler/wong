@@ -19,8 +19,11 @@ entries:
       title: Graph
       url: /graph
     - output: web,pdf
-      title: Title
+      title: Network
       url: /network
+    - output: web,pdf
+      title: Title
+      url: /resnetx
     output: web
     title: wong
   output: web

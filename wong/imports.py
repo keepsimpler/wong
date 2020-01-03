@@ -14,3 +14,5 @@ import matplotlib.pylab as plt
 
 import networkx as nx
 
+from fastcore.all import *
+

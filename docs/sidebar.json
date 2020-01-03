@@ -4,6 +4,7 @@
     "Core": "/core",
     "Configuration": "/config",
     "Graph": "/graph",
-    "Title": "/network"
+    "Network": "/network",
+    "Title": "/resnetx"
   }
 }
