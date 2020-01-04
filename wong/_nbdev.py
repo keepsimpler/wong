@@ -22,6 +22,7 @@ index = {"OprtType": "00_core.ipynb",
          "NodeOP": "03_network.ipynb",
          "NetworkOP": "03_network.ipynb",
          "get_pred": "04_resnetx.ipynb",
+         "layer_diff": "04_resnetx.ipynb",
          "ResNetX": "04_resnetx.ipynb"}
 
 modules = ["core.py",
