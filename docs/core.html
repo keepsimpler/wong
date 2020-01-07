@@ -69,7 +69,7 @@ summary: "All the basic functions and classes"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="conv_unit" class="doc_header"><code>conv_unit</code><a href="https://github.com/keepsimpler/wong/tree/master/wong/core.py#L22" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>conv_unit</code>(<strong><code>ni</code></strong>:<code>int</code>, <strong><code>no</code></strong>:<code>int</code>, <strong><code>seq</code></strong>:<code>tuple</code>, <strong><code>ks</code></strong>:<code>int</code>=<em><code>3</code></em>, <strong><code>stride</code></strong>:<code>int</code>=<em><code>1</code></em>, <strong><code>groups</code></strong>:<code>int</code>=<em><code>1</code></em>, <strong><code>zero_bn</code></strong>:<code>bool</code>=<em><code>False</code></em>, <strong><code>act_inplace</code></strong>=<em><code>False</code></em>)</p>
+<h4 id="conv_unit" class="doc_header"><code>conv_unit</code><a href="https://github.com/keepsimpler/wong/tree/master/wong/core.py#L22" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>conv_unit</code>(<strong><code>ni</code></strong>:<code>int</code>, <strong><code>no</code></strong>:<code>int</code>, <strong><code>seq</code></strong>:<code>tuple</code>, <strong><code>ks</code></strong>:<code>int</code>=<em><code>3</code></em>, <strong><code>stride</code></strong>:<code>int</code>=<em><code>1</code></em>, <strong><code>groups</code></strong>:<code>int</code>=<em><code>1</code></em>, <strong><code>zero_bn</code></strong>:<code>bool</code>=<em><code>False</code></em>, <strong><code>act_inplace</code></strong>=<em><code>True</code></em>)</p>
 </blockquote>
 <p>The basic convolutional operation, which is combination of operators such as conv, bn, relu, etc.</p>
 
@@ -185,6 +185,80 @@ Xception: Deep Learning with Depthwise Separable Convolutions:
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Stemming-Stage">Stemming Stage<a class="anchor-link" href="#Stemming-Stage">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<h4 id="resnet_stem" class="doc_header"><code>resnet_stem</code><a href="https://github.com/keepsimpler/wong/tree/master/wong/core.py#L92" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>resnet_stem</code>(<strong><code>ni</code></strong>:<code>int</code>=<em><code>3</code></em>, <strong><code>no</code></strong>:<code>int</code>=<em><code>64</code></em>, <strong><code>deep_stem</code></strong>:<code>bool</code>=<em><code>False</code></em>)</p>
+</blockquote>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">resnet_stem</span><span class="p">(),</span> <span class="n">resnet_stem</span><span class="p">(</span><span class="n">deep_stem</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>(Sequential(
+   (0): Conv2d(3, 64, kernel_size=(7, 7), stride=(2, 2), padding=(3, 3), bias=False)
+   (1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+   (2): ReLU(inplace=True)
+   (3): MaxPool2d(kernel_size=3, stride=2, padding=1, dilation=1, ceil_mode=False)
+ ), Sequential(
+   (0): Conv2d(3, 64, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+   (1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+   (2): ReLU()
+   (3): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+   (4): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+   (5): ReLU()
+   (6): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+   (7): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+   (8): ReLU()
+   (9): MaxPool2d(kernel_size=3, stride=2, padding=1, dilation=1, ceil_mode=False)
+ ))</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Identity-mapping">Identity mapping<a class="anchor-link" href="#Identity-mapping">&#182;</a></h2>
 </div>
 </div>
@@ -201,7 +275,7 @@ Xception: Deep Learning with Depthwise Separable Convolutions:
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="IdentityMapping" class="doc_header"><code>class</code> <code>IdentityMapping</code><a href="https://github.com/keepsimpler/wong/tree/master/wong/core.py#L92" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>IdentityMapping</code>(<strong><code>ni</code></strong>:<code>int</code>, <strong><code>no</code></strong>:<code>int</code>, <strong><code>stride</code></strong>:<code>int</code>=<em><code>1</code></em>, <strong><code>pooling_type</code></strong>:<code>str</code>=<em><code>'max'</code></em>) :: <code>Module</code></p>
+<h2 id="IdentityMapping2" class="doc_header"><code>class</code> <code>IdentityMapping2</code><a href="https://github.com/keepsimpler/wong/tree/master/wong/core.py#L107" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>IdentityMapping2</code>(<strong><code>ni</code></strong>:<code>int</code>, <strong><code>no</code></strong>:<code>int</code>, <strong><code>stride</code></strong>:<code>int</code>=<em><code>1</code></em>, <strong><code>pooling_type</code></strong>:<code>str</code>=<em><code>'max'</code></em>) :: <code>Module</code></p>
 </blockquote>
 <p>Identity Mapping between input and output, four cases:</p>
 <ol>
@@ -215,6 +289,77 @@ maxpool or avgpool</li>
 (maxpool or avgpool) and 1x1 conv and bn</li>
 </ol>
 
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<h2 id="IdentityMapping" class="doc_header"><code>class</code> <code>IdentityMapping</code><a href="https://github.com/keepsimpler/wong/tree/master/wong/core.py#L139" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>IdentityMapping</code>(<strong><code>ni</code></strong>:<code>int</code>, <strong><code>no</code></strong>:<code>int</code>, <strong><code>stride</code></strong>:<code>int</code>=<em><code>1</code></em>) :: <code>Module</code></p>
+</blockquote>
+<p>Identity mapping of ResNet.</p>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">IdentityMapping</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="n">stride</span><span class="o">=</span><span class="mi">2</span><span class="p">),</span> <span class="n">IdentityMapping</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="n">stride</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> \
+<span class="n">IdentityMapping</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="n">stride</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">IdentityMapping</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="n">stride</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>(IdentityMapping(
+   (unit): Sequential(
+     (0): Conv2d(16, 32, kernel_size=(1, 1), stride=(2, 2), bias=False)
+     (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+   )
+ ), IdentityMapping(
+   (unit): Sequential(
+     (0): Conv2d(16, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
+     (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+   )
+ ), IdentityMapping(
+   (unit): Sequential()
+ ), IdentityMapping(
+   (unit): Sequential(
+     (0): Conv2d(16, 16, kernel_size=(1, 1), stride=(2, 2), bias=False)
+     (1): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+   )
+ ))</pre>
 </div>
 
 </div>
@@ -241,7 +386,7 @@ maxpool or avgpool</li>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="Classifier" class="doc_header"><code>class</code> <code>Classifier</code><a href="https://github.com/keepsimpler/wong/tree/master/wong/core.py#L124" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>Classifier</code>(<strong><code>ni</code></strong>, <strong><code>no</code></strong>) :: <code>Module</code></p>
+<h2 id="Classifier" class="doc_header"><code>class</code> <code>Classifier</code><a href="https://github.com/keepsimpler/wong/tree/master/wong/core.py#L154" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>Classifier</code>(<strong><code>ni</code></strong>, <strong><code>no</code></strong>) :: <code>Module</code></p>
 </blockquote>
 <p>Usually work as the final operator for image processing (classification, object detection, etc.)</p>
 <p>Including:
@@ -274,7 +419,7 @@ a linear op, which perform classification.</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="init_cnn" class="doc_header"><code>init_cnn</code><a href="https://github.com/keepsimpler/wong/tree/master/wong/core.py#L144" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>init_cnn</code>(<strong><code>m</code></strong>)</p>
+<h4 id="init_cnn" class="doc_header"><code>init_cnn</code><a href="https://github.com/keepsimpler/wong/tree/master/wong/core.py#L174" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>init_cnn</code>(<strong><code>m</code></strong>)</p>
 </blockquote>
 <p>copy from <a href="https://github.com/fastai/fastai/blob/master/fastai/vision/models/xresnet.py">https://github.com/fastai/fastai/blob/master/fastai/vision/models/xresnet.py</a></p>
 
@@ -298,7 +443,7 @@ a linear op, which perform classification.</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="num_params" class="doc_header"><code>num_params</code><a href="https://github.com/keepsimpler/wong/tree/master/wong/core.py#L152" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>num_params</code>(<strong><code>net</code></strong>:<code>Module</code>)</p>
+<h4 id="num_params" class="doc_header"><code>num_params</code><a href="https://github.com/keepsimpler/wong/tree/master/wong/core.py#L182" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>num_params</code>(<strong><code>net</code></strong>:<code>Module</code>)</p>
 </blockquote>
 <p>Number of parameters of a neural network</p>
 

@@ -10,6 +10,8 @@ from yacs.config import CfgNode as CN
 
 #Cell
 _C = CN()
+_C.URL = ''  # url for pretrained model storage
+
 
 #Cell
 _C.GRAPH = CN()
@@ -18,6 +20,16 @@ _C.GRAPH = CN()
 _C.GRAPH.NUM_STAGES = 4
 _C.GRAPH.NUM_NODES = (3, 8, 36, 3)
 _C.GRAPH.NUM_CHANNELS = (64, 128, 256, 512)
+_C.GRAPH.STEM = ''
+_C.GRAPH.UNIT = ''
+_C.GRAPH.FOLD = 1
+_C.GRAPH.NI = 64
+_C.GRAPH.START_ID = 0
+_C.GRAPH.BASE = 64
+_C.GRAPH.EXP = 2
+_C.GRAPH.BOTTLE_SCALE = 4
+_C.GRAPH.FIRST_DOWNSAMPLE = False
+_C.GRAPH.DEEP_STEM = False
 
 #Cell
 def assert_cfg(cfg):

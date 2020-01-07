@@ -1,0 +1,15 @@
+GRAPH:
+  NUM_STAGES: 4
+  NUM_NODES: (3, 8, 36, 3)
+  NUM_CHANNELS: (64, 128, 256, 512)
+  STEM : 'resnet_stem'  # function of stemming stage
+  UNIT : 'resnet_bottleneck'
+  NI : 64 # number of input channels
+  BASE : 64 
+  EXP : 2
+  BOTTLE_SCALE : 4
+  FIRST_DOWNSAMPLE : False
+  DEEP_STEM : False
+  
+  
+URL: 'https://download.pytorch.org/models/resnet152-b121ed2d.pth'
