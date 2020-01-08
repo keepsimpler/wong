@@ -78,7 +78,7 @@ class ResNetX(nn.Module):
                 diff = layer_diff(cur, pred, num_nodes)
                 assert diff == 0 or diff == 1 or (diff == 2 and pred == 0), \
                        'cur={}, pred={}, diff={} is not allowed.'.format(cur, pred, diff)
-                print('cur = {} , pred = {} ,diff = {}'.format(cur, pred, diff))
+#                 print('cur = {} , pred = {} ,diff = {}'.format(cur, pred, diff))
                 if diff == 0:
                     idmappings += [IdentityMapping(no, no, stride=1)]
                 elif diff == 1:
@@ -108,7 +108,7 @@ class ResNetX(nn.Module):
         x = self.classifier(x)
         return x
 
-    def load_state_dict(self, state_dict, local_to_pretrained):
+    def my_load_state_dict(self, state_dict, local_to_pretrained):
         error_msgs = []
         def load(module, prefix=''):
             local_name_params = itertools.chain(module._parameters.items(), module._buffers.items())
@@ -118,7 +118,7 @@ class ResNetX(nn.Module):
             for name, param in local_state.items():
                 key = new_prefix + name
                 if key in state_dict:
-                    print(key)
+#                     print(key)
                     input_param = state_dict[key]
 
                     if input_param.shape != param.shape:
@@ -192,7 +192,7 @@ def resnetx152(cfg_file:str, fold:int, start_id:int, pretrained:bool=False):
     if pretrained:
         state_dict = load_state_dict_from_url(cfg.URL)
         local_to_pretrained = resnet_local_to_pretrained(cfg.GRAPH.NUM_NODES,start_id, fold)
-        model.load_state_dict(state_dict, local_to_pretrained)
+        model.my_load_state_dict(state_dict, local_to_pretrained)
         for param in model.parameters():
             param.requires_grad = False
     return model

@@ -22,7 +22,7 @@ entries:
       title: Network
       url: /network
     - output: web,pdf
-      title: Title
+      title: ResNetX
       url: /resnetx
     output: web
     title: wong

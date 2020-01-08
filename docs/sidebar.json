@@ -5,6 +5,6 @@
     "Configuration": "/config",
     "Graph": "/graph",
     "Network": "/network",
-    "Title": "/resnetx"
+    "ResNetX": "/resnetx"
   }
 }
