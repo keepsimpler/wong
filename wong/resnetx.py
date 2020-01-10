@@ -180,7 +180,7 @@ def resnet_local_to_pretrained(num_nodes, start_id, fold):
 
 
 #Cell
-def resnetx(cfg_file:str, num_nodes:tuple, fold:int, start_id:int, pretrained:bool=False, **kwargs):
+def resnetx(cfg_file:str, num_nodes:tuple, fold:int, start_id:int, exp:int, pretrained:bool=False, **kwargs):
     cfg.merge_from_file(cfg_file)
     assert_cfg(cfg)
     cfg.freeze()
@@ -188,7 +188,7 @@ def resnetx(cfg_file:str, num_nodes:tuple, fold:int, start_id:int, pretrained:bo
     Unit = getattr(sys.modules[__name__], cfg.GRAPH.UNIT)
     # start_id >= fold + 1, fold <= 6
     model = ResNetX(Stem = Stem, Unit = Unit, fold=fold, ni=cfg.GRAPH.NI, num_nodes=num_nodes,
-                    start_id=start_id, base=cfg.GRAPH.BASE, exp=cfg.GRAPH.EXP, bottle_scale=cfg.GRAPH.BOTTLE_SCALE,
+                    start_id=start_id, base=cfg.GRAPH.BASE, exp=exp, bottle_scale=cfg.GRAPH.BOTTLE_SCALE,
                     first_downsample=cfg.GRAPH.FIRST_DOWNSAMPLE, **kwargs)
     if pretrained:
         state_dict = load_state_dict_from_url(cfg.URL)
