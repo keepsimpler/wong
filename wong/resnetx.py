@@ -9,6 +9,7 @@ from .config import cfg, assert_cfg
 
 from torchvision.models.utils import load_state_dict_from_url
 
+
 #Cell
 def get_pred(l:int, start_id:int, d:int=1):
     "get predecessor layer id."
