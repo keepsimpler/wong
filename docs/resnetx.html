@@ -200,7 +200,7 @@ summary: "a folded resnet"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="ResNetX" class="doc_header"><code>class</code> <code>ResNetX</code><a href="https://github.com/keepsimpler/wong/tree/master/wong/resnetx.py#L49" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>ResNetX</code>(<strong><code>Stem</code></strong>, <strong><code>Unit</code></strong>, <strong><code>fold</code></strong>:<code>int</code>, <strong><code>ni</code></strong>:<code>int</code>, <strong><code>num_nodes</code></strong>:<code>tuple</code>, <strong><code>start_id</code></strong>:<code>int</code>=<em><code>0</code></em>, <strong><code>base</code></strong>:<code>int</code>=<em><code>64</code></em>, <strong><code>exp</code></strong>:<code>int</code>=<em><code>2</code></em>, <strong><code>bottle_scale</code></strong>:<code>int</code>=<em><code>1</code></em>, <strong><code>first_downsample</code></strong>:<code>bool</code>=<em><code>False</code></em>, <strong><code>deep_stem</code></strong>:<code>bool</code>=<em><code>False</code></em>, <strong><code>c_in</code></strong>:<code>int</code>=<em><code>3</code></em>, <strong><code>c_out</code></strong>:<code>int</code>=<em><code>10</code></em>, <strong>**<code>kwargs</code></strong>) :: <code>Module</code></p>
+<h2 id="ResNetX" class="doc_header"><code>class</code> <code>ResNetX</code><a href="https://github.com/keepsimpler/wong/tree/master/wong/resnetx.py#L49" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>ResNetX</code>(<strong><code>Stem</code></strong>, <strong><code>Unit</code></strong>, <strong><code>fold</code></strong>:<code>int</code>, <strong><code>ni</code></strong>:<code>int</code>, <strong><code>num_nodes</code></strong>:<code>tuple</code>, <strong><code>start_id</code></strong>:<code>int</code>=<em><code>0</code></em>, <strong><code>base</code></strong>:<code>int</code>=<em><code>64</code></em>, <strong><code>exp</code></strong>:<code>int</code>=<em><code>2</code></em>, <strong><code>bottle_scale</code></strong>:<code>int</code>=<em><code>1</code></em>, <strong><code>first_downsample</code></strong>:<code>bool</code>=<em><code>False</code></em>, <strong><code>c_in</code></strong>:<code>int</code>=<em><code>3</code></em>, <strong><code>c_out</code></strong>:<code>int</code>=<em><code>10</code></em>, <strong>**<code>kwargs</code></strong>) :: <code>Module</code></p>
 </blockquote>
 <p>A folded resnet.</p>
 
@@ -247,7 +247,7 @@ summary: "a folded resnet"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="resnetx152" class="doc_header"><code>resnetx152</code><a href="https://github.com/keepsimpler/wong/tree/master/wong/resnetx.py#L182" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>resnetx152</code>(<strong><code>cfg_file</code></strong>:<code>str</code>, <strong><code>fold</code></strong>:<code>int</code>, <strong><code>start_id</code></strong>:<code>int</code>, <strong><code>pretrained</code></strong>:<code>bool</code>=<em><code>False</code></em>)</p>
+<h4 id="resnetx152" class="doc_header"><code>resnetx152</code><a href="https://github.com/keepsimpler/wong/tree/master/wong/resnetx.py#L182" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>resnetx152</code>(<strong><code>cfg_file</code></strong>:<code>str</code>, <strong><code>fold</code></strong>:<code>int</code>, <strong><code>start_id</code></strong>:<code>int</code>, <strong><code>pretrained</code></strong>:<code>bool</code>=<em><code>False</code></em>, <strong>**<code>kwargs</code></strong>)</p>
 </blockquote>
 
 </div>
@@ -264,7 +264,8 @@ summary: "a folded resnet"
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">cfg_file</span> <span class="o">=</span> <span class="s1">&#39;configs/imagenet/resnet/resnet152.yaml&#39;</span>
-<span class="n">model</span> <span class="o">=</span> <span class="n">resnetx152</span><span class="p">(</span><span class="n">cfg_file</span><span class="p">,</span> <span class="n">fold</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">start_id</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">pretrained</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="c1">#model = resnetx152(cfg_file, fold=1, start_id=1, pretrained=True)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">resnetx152</span><span class="p">(</span><span class="n">cfg_file</span><span class="p">,</span> <span class="n">fold</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">start_id</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">pretrained</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">c_out</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
 </pre></div>
 
     </div>

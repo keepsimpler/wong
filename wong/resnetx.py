@@ -49,7 +49,7 @@ def layer_diff(cur:int, pred:int, num_nodes:tuple):
 class ResNetX(nn.Module):
     "A folded resnet."
     def __init__(self, Stem, Unit, fold:int, ni:int, num_nodes:tuple, start_id:int=0, base:int=64, exp:int=2,
-                 bottle_scale:int=1, first_downsample:bool=False, deep_stem:bool=False,
+                 bottle_scale:int=1, first_downsample:bool=False,
                  c_in:int=3, c_out:int=10, **kwargs):
         super(ResNetX, self).__init__()
         # fold depth should be less than the sum length of any two neighboring stages
@@ -62,7 +62,7 @@ class ResNetX(nn.Module):
         strides = [1 if i==0 and not first_downsample else 2 for i in range(num_stages)]
 #         print('nhs=', nhs, 'nos=', nos, 'nus=', nus, 'strides=', strides)
 
-        self.stem = Stem(c_in, ni, deep_stem)
+        self.stem = Stem(c_in, ni) # , deep_stem
 
         units = []
         idmappings = []
@@ -92,7 +92,7 @@ class ResNetX(nn.Module):
 
         self.classifier = Classifier(nos[-1], c_out)
         self.start_id, self.fold = start_id, fold
-        self.num_nodes, self.deep_stem = num_nodes, deep_stem
+        self.num_nodes = num_nodes
         init_cnn(self)
 
     def forward(self, x):
@@ -179,7 +179,7 @@ def resnet_local_to_pretrained(num_nodes, start_id, fold):
 
 
 #Cell
-def resnetx152(cfg_file:str, fold:int, start_id:int, pretrained:bool=False):
+def resnetx152(cfg_file:str, fold:int, start_id:int, pretrained:bool=False, **kwargs):
     cfg.merge_from_file(cfg_file)
     assert_cfg(cfg)
     cfg.freeze()
@@ -188,7 +188,7 @@ def resnetx152(cfg_file:str, fold:int, start_id:int, pretrained:bool=False):
     # start_id >= fold + 1, fold <= 6
     model = ResNetX(Stem = Stem, Unit = Unit, fold=fold, ni=cfg.GRAPH.NI, num_nodes=cfg.GRAPH.NUM_NODES,
                     start_id=start_id, base=cfg.GRAPH.BASE, exp=cfg.GRAPH.EXP, bottle_scale=cfg.GRAPH.BOTTLE_SCALE,
-                    first_downsample=cfg.GRAPH.FIRST_DOWNSAMPLE, deep_stem=cfg.GRAPH.DEEP_STEM)
+                    first_downsample=cfg.GRAPH.FIRST_DOWNSAMPLE, **kwargs)
     if pretrained:
         state_dict = load_state_dict_from_url(cfg.URL)
         local_to_pretrained = resnet_local_to_pretrained(cfg.GRAPH.NUM_NODES,start_id, fold)
