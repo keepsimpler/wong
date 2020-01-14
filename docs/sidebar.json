@@ -5,6 +5,7 @@
     "Configuration": "/config",
     "Graph": "/graph",
     "Network": "/network",
-    "ResNetX": "/resnetx"
+    "ResNetX": "/resnetx",
+    "Title": "/automl"
   }
 }
