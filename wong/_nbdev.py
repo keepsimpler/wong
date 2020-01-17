@@ -28,7 +28,8 @@ index = {"OprtType": "00_core.ipynb",
          "get_pred": "04_resnetx.ipynb",
          "layer_diff": "04_resnetx.ipynb",
          "ResNetX": "04_resnetx.ipynb",
-         "resnet_local_to_pretrained": "04_resnetx.ipynb"}
+         "resnet_local_to_pretrained": "04_resnetx.ipynb",
+         "resnetx": "04_resnetx.ipynb"}
 
 modules = ["core.py",
            "config.py",

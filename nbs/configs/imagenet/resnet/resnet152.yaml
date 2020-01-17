@@ -5,6 +5,8 @@ GRAPH:
   STEM : 'resnet_stem'  # function of stemming stage
   UNIT : 'resnet_bottleneck'
   CONN : 'IdentityMapping'
+  FOLD : 3
+  START_ID : 0
   NI : 64 # number of input channels
   BASE : 64 
   EXP : 2

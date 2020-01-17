@@ -7,6 +7,7 @@ torch.backends.cudnn.benchmark = True
 import sys
 from collections import OrderedDict
 from functools import partial
+import itertools
 
 import numpy as np
 from numpy.linalg import matrix_power # for calculation of paths in graph

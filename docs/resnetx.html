@@ -29,7 +29,7 @@ summary: "a folded resnet"
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">fastcore.all</span> <span class="k">import</span> <span class="o">*</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">fastcore.all</span> <span class="k">import</span> <span class="o">*</span>  <span class="c1"># test_eq</span>
 </pre></div>
 
     </div>
@@ -266,58 +266,20 @@ summary: "a folded resnet"
 
 </div>
 <div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">cfg_list</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;GRAPH.STEM&quot;</span><span class="p">,</span> <span class="s2">&quot;resnet_stem&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;GRAPH.UNIT&quot;</span><span class="p">,</span> <span class="s2">&quot;resnet_bottleneck&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;GRAPH.CONN&quot;</span><span class="p">,</span> <span class="s2">&quot;IdentityMapping&quot;</span><span class="p">,</span>
-           <span class="p">]</span>
-<span class="n">model</span> <span class="o">=</span> <span class="n">_resnetx</span><span class="p">(</span><span class="n">cfg</span><span class="p">,</span> <span class="n">cfg_list</span><span class="o">=</span><span class="n">cfg_list</span><span class="p">,</span> <span class="n">pretrained</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">c_out</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
 
 <div class="output_wrapper">
 <div class="output">
 
 <div class="output_area">
 
-<div class="output_subarea output_text output_error">
-<pre>
-<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">AssertionError</span>                            Traceback (most recent call last)
-<span class="ansi-green-fg">&lt;ipython-input-189-ea44c91983c3&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
-<span class="ansi-green-intense-fg ansi-bold">      3</span>             <span class="ansi-blue-fg">&#34;GRAPH.CONN&#34;</span><span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">&#34;IdentityMapping&#34;</span><span class="ansi-blue-fg">,</span>
-<span class="ansi-green-intense-fg ansi-bold">      4</span>            ]
-<span class="ansi-green-fg">----&gt; 5</span><span class="ansi-red-fg"> </span>model <span class="ansi-blue-fg">=</span> _resnetx<span class="ansi-blue-fg">(</span>cfg<span class="ansi-blue-fg">,</span> cfg_list<span class="ansi-blue-fg">=</span>cfg_list<span class="ansi-blue-fg">,</span> pretrained<span class="ansi-blue-fg">=</span><span class="ansi-green-fg">False</span><span class="ansi-blue-fg">,</span> c_out<span class="ansi-blue-fg">=</span><span class="ansi-cyan-fg">100</span><span class="ansi-blue-fg">)</span>
 
-<span class="ansi-green-fg">&lt;ipython-input-186-bc3016a969a9&gt;</span> in <span class="ansi-cyan-fg">_resnetx</span><span class="ansi-blue-fg">(default_cfg, cfg_file, cfg_list, pretrained, **kwargs)</span>
-<span class="ansi-green-intense-fg ansi-bold">      5</span>     cfg <span class="ansi-blue-fg">=</span> default_cfg
-<span class="ansi-green-intense-fg ansi-bold">      6</span>     <span class="ansi-green-fg">if</span> cfg_file <span class="ansi-green-fg">is</span> <span class="ansi-green-fg">not</span> <span class="ansi-green-fg">None</span><span class="ansi-blue-fg">:</span> cfg<span class="ansi-blue-fg">.</span>merge_from_file<span class="ansi-blue-fg">(</span>cfg_file<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-fg">----&gt; 7</span><span class="ansi-red-fg">     </span><span class="ansi-green-fg">if</span> cfg_list <span class="ansi-green-fg">is</span> <span class="ansi-green-fg">not</span> <span class="ansi-green-fg">None</span><span class="ansi-blue-fg">:</span> cfg<span class="ansi-blue-fg">.</span>merge_from_list<span class="ansi-blue-fg">(</span>cfg_list<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">      8</span>     assert_cfg<span class="ansi-blue-fg">(</span>cfg<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">      9</span>     cfg<span class="ansi-blue-fg">.</span>freeze<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span>
+<div class="output_markdown rendered_html output_subarea ">
+<h4 id="resnetx" class="doc_header"><code>resnetx</code><a href="https://github.com/keepsimpler/wong/tree/master/wong/resnetx.py#L184" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>resnetx</code>(<strong><code>default_cfg</code></strong>:<code>dict</code>, <strong><code>cfg_file</code></strong>:<code>str</code>=<em><code>None</code></em>, <strong><code>cfg_list</code></strong>:<code>list</code>=<em><code>None</code></em>, <strong><code>pretrained</code></strong>:<code>bool</code>=<em><code>False</code></em>, <strong>**<code>kwargs</code></strong>)</p>
+</blockquote>
+<p>wrapped resnetx</p>
 
-<span class="ansi-green-fg">~/anaconda3/lib/python3.7/site-packages/yacs/config.py</span> in <span class="ansi-cyan-fg">merge_from_list</span><span class="ansi-blue-fg">(self, cfg_list)</span>
-<span class="ansi-green-intense-fg ansi-bold">    241</span>                 d <span class="ansi-blue-fg">=</span> d<span class="ansi-blue-fg">[</span>subkey<span class="ansi-blue-fg">]</span>
-<span class="ansi-green-intense-fg ansi-bold">    242</span>             subkey <span class="ansi-blue-fg">=</span> key_list<span class="ansi-blue-fg">[</span><span class="ansi-blue-fg">-</span><span class="ansi-cyan-fg">1</span><span class="ansi-blue-fg">]</span>
-<span class="ansi-green-fg">--&gt; 243</span><span class="ansi-red-fg">             </span>_assert_with_logging<span class="ansi-blue-fg">(</span>subkey <span class="ansi-green-fg">in</span> d<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">&#34;Non-existent key: {}&#34;</span><span class="ansi-blue-fg">.</span>format<span class="ansi-blue-fg">(</span>full_key<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">    244</span>             value <span class="ansi-blue-fg">=</span> self<span class="ansi-blue-fg">.</span>_decode_cfg_value<span class="ansi-blue-fg">(</span>v<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">    245</span>             value <span class="ansi-blue-fg">=</span> _check_and_coerce_cfg_value_type<span class="ansi-blue-fg">(</span>value<span class="ansi-blue-fg">,</span> d<span class="ansi-blue-fg">[</span>subkey<span class="ansi-blue-fg">]</span><span class="ansi-blue-fg">,</span> subkey<span class="ansi-blue-fg">,</span> full_key<span class="ansi-blue-fg">)</span>
-
-<span class="ansi-green-fg">~/anaconda3/lib/python3.7/site-packages/yacs/config.py</span> in <span class="ansi-cyan-fg">_assert_with_logging</span><span class="ansi-blue-fg">(cond, msg)</span>
-<span class="ansi-green-intense-fg ansi-bold">    519</span>     <span class="ansi-green-fg">if</span> <span class="ansi-green-fg">not</span> cond<span class="ansi-blue-fg">:</span>
-<span class="ansi-green-intense-fg ansi-bold">    520</span>         logger<span class="ansi-blue-fg">.</span>debug<span class="ansi-blue-fg">(</span>msg<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-fg">--&gt; 521</span><span class="ansi-red-fg">     </span><span class="ansi-green-fg">assert</span> cond<span class="ansi-blue-fg">,</span> msg
-<span class="ansi-green-intense-fg ansi-bold">    522</span> 
-<span class="ansi-green-intense-fg ansi-bold">    523</span> 
-
-<span class="ansi-red-fg">AssertionError</span>: Non-existent key: GRAPH.CONN</pre>
 </div>
+
 </div>
 
 </div>
@@ -329,8 +291,7 @@ summary: "a folded resnet"
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">cfg_file</span> <span class="o">=</span> <span class="s1">&#39;configs/imagenet/resnet/resnet152.yaml&#39;</span>
-<span class="n">model</span> <span class="o">=</span> <span class="n">_resnetx</span><span class="p">(</span><span class="n">cfg</span><span class="p">,</span> <span class="n">cfg_file</span><span class="o">=</span><span class="n">cfg_file</span><span class="p">,</span> <span class="n">pretrained</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">c_out</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">cfg</span>
 </pre></div>
 
     </div>
@@ -342,53 +303,48 @@ summary: "a folded resnet"
 
 <div class="output_area">
 
-<div class="output_subarea output_text output_error">
-<pre>
-<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">KeyError</span>                                  Traceback (most recent call last)
-<span class="ansi-green-fg">&lt;ipython-input-190-c6032cab4074&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
-<span class="ansi-green-intense-fg ansi-bold">      1</span> cfg_file <span class="ansi-blue-fg">=</span> <span class="ansi-blue-fg">&#39;configs/imagenet/resnet/resnet152.yaml&#39;</span>
-<span class="ansi-green-fg">----&gt; 2</span><span class="ansi-red-fg"> </span>model <span class="ansi-blue-fg">=</span> _resnetx<span class="ansi-blue-fg">(</span>cfg<span class="ansi-blue-fg">,</span> cfg_file<span class="ansi-blue-fg">=</span>cfg_file<span class="ansi-blue-fg">,</span> pretrained<span class="ansi-blue-fg">=</span><span class="ansi-green-fg">False</span><span class="ansi-blue-fg">,</span> c_out<span class="ansi-blue-fg">=</span><span class="ansi-cyan-fg">100</span><span class="ansi-blue-fg">)</span>
 
-<span class="ansi-green-fg">&lt;ipython-input-186-bc3016a969a9&gt;</span> in <span class="ansi-cyan-fg">_resnetx</span><span class="ansi-blue-fg">(default_cfg, cfg_file, cfg_list, pretrained, **kwargs)</span>
-<span class="ansi-green-intense-fg ansi-bold">      4</span>     <span class="ansi-green-fg">assert</span> default_cfg<span class="ansi-blue-fg">.</span>__class__<span class="ansi-blue-fg">.</span>__module__ <span class="ansi-blue-fg">==</span> <span class="ansi-blue-fg">&#39;yacs.config&#39;</span> <span class="ansi-green-fg">and</span> default_cfg<span class="ansi-blue-fg">.</span>__class__<span class="ansi-blue-fg">.</span>__name__ <span class="ansi-blue-fg">==</span> <span class="ansi-blue-fg">&#39;CfgNode&#39;</span>
-<span class="ansi-green-intense-fg ansi-bold">      5</span>     cfg <span class="ansi-blue-fg">=</span> default_cfg
-<span class="ansi-green-fg">----&gt; 6</span><span class="ansi-red-fg">     </span><span class="ansi-green-fg">if</span> cfg_file <span class="ansi-green-fg">is</span> <span class="ansi-green-fg">not</span> <span class="ansi-green-fg">None</span><span class="ansi-blue-fg">:</span> cfg<span class="ansi-blue-fg">.</span>merge_from_file<span class="ansi-blue-fg">(</span>cfg_file<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">      7</span>     <span class="ansi-green-fg">if</span> cfg_list <span class="ansi-green-fg">is</span> <span class="ansi-green-fg">not</span> <span class="ansi-green-fg">None</span><span class="ansi-blue-fg">:</span> cfg<span class="ansi-blue-fg">.</span>merge_from_list<span class="ansi-blue-fg">(</span>cfg_list<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">      8</span>     assert_cfg<span class="ansi-blue-fg">(</span>cfg<span class="ansi-blue-fg">)</span>
 
-<span class="ansi-green-fg">~/anaconda3/lib/python3.7/site-packages/yacs/config.py</span> in <span class="ansi-cyan-fg">merge_from_file</span><span class="ansi-blue-fg">(self, cfg_filename)</span>
-<span class="ansi-green-intense-fg ansi-bold">    211</span>         <span class="ansi-green-fg">with</span> open<span class="ansi-blue-fg">(</span>cfg_filename<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">&#34;r&#34;</span><span class="ansi-blue-fg">)</span> <span class="ansi-green-fg">as</span> f<span class="ansi-blue-fg">:</span>
-<span class="ansi-green-intense-fg ansi-bold">    212</span>             cfg <span class="ansi-blue-fg">=</span> self<span class="ansi-blue-fg">.</span>load_cfg<span class="ansi-blue-fg">(</span>f<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-fg">--&gt; 213</span><span class="ansi-red-fg">         </span>self<span class="ansi-blue-fg">.</span>merge_from_other_cfg<span class="ansi-blue-fg">(</span>cfg<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">    214</span> 
-<span class="ansi-green-intense-fg ansi-bold">    215</span>     <span class="ansi-green-fg">def</span> merge_from_other_cfg<span class="ansi-blue-fg">(</span>self<span class="ansi-blue-fg">,</span> cfg_other<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
+<div class="output_text output_subarea output_execute_result">
+<pre>CfgNode({&#39;URL&#39;: &#39;&#39;, &#39;GRAPH&#39;: CfgNode({&#39;NUM_STAGES&#39;: 4, &#39;NUM_NODES&#39;: (3, 8, 36, 3), &#39;NUM_CHANNELS&#39;: (64, 128, 256, 512), &#39;STEM&#39;: &#39;&#39;, &#39;UNIT&#39;: &#39;&#39;, &#39;CONN&#39;: &#39;&#39;, &#39;FOLD&#39;: 1, &#39;START_ID&#39;: 0, &#39;NI&#39;: 64, &#39;BASE&#39;: 64, &#39;EXP&#39;: 2, &#39;BOTTLE_SCALE&#39;: 4, &#39;FIRST_DOWNSAMPLE&#39;: False, &#39;DEEP_STEM&#39;: False})})</pre>
+</div>
 
-<span class="ansi-green-fg">~/anaconda3/lib/python3.7/site-packages/yacs/config.py</span> in <span class="ansi-cyan-fg">merge_from_other_cfg</span><span class="ansi-blue-fg">(self, cfg_other)</span>
-<span class="ansi-green-intense-fg ansi-bold">    215</span>     <span class="ansi-green-fg">def</span> merge_from_other_cfg<span class="ansi-blue-fg">(</span>self<span class="ansi-blue-fg">,</span> cfg_other<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
-<span class="ansi-green-intense-fg ansi-bold">    216</span>         <span class="ansi-blue-fg">&#34;&#34;&#34;Merge `cfg_other` into this CfgNode.&#34;&#34;&#34;</span>
-<span class="ansi-green-fg">--&gt; 217</span><span class="ansi-red-fg">         </span>_merge_a_into_b<span class="ansi-blue-fg">(</span>cfg_other<span class="ansi-blue-fg">,</span> self<span class="ansi-blue-fg">,</span> self<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">[</span><span class="ansi-blue-fg">]</span><span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">    218</span> 
-<span class="ansi-green-intense-fg ansi-bold">    219</span>     <span class="ansi-green-fg">def</span> merge_from_list<span class="ansi-blue-fg">(</span>self<span class="ansi-blue-fg">,</span> cfg_list<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
+</div>
 
-<span class="ansi-green-fg">~/anaconda3/lib/python3.7/site-packages/yacs/config.py</span> in <span class="ansi-cyan-fg">_merge_a_into_b</span><span class="ansi-blue-fg">(a, b, root, key_list)</span>
-<span class="ansi-green-intense-fg ansi-bold">    458</span>             <span class="ansi-green-fg">if</span> isinstance<span class="ansi-blue-fg">(</span>v<span class="ansi-blue-fg">,</span> CfgNode<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
-<span class="ansi-green-intense-fg ansi-bold">    459</span>                 <span class="ansi-green-fg">try</span><span class="ansi-blue-fg">:</span>
-<span class="ansi-green-fg">--&gt; 460</span><span class="ansi-red-fg">                     </span>_merge_a_into_b<span class="ansi-blue-fg">(</span>v<span class="ansi-blue-fg">,</span> b<span class="ansi-blue-fg">[</span>k<span class="ansi-blue-fg">]</span><span class="ansi-blue-fg">,</span> root<span class="ansi-blue-fg">,</span> key_list <span class="ansi-blue-fg">+</span> <span class="ansi-blue-fg">[</span>k<span class="ansi-blue-fg">]</span><span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">    461</span>                 <span class="ansi-green-fg">except</span> BaseException<span class="ansi-blue-fg">:</span>
-<span class="ansi-green-intense-fg ansi-bold">    462</span>                     <span class="ansi-green-fg">raise</span>
-
-<span class="ansi-green-fg">~/anaconda3/lib/python3.7/site-packages/yacs/config.py</span> in <span class="ansi-cyan-fg">_merge_a_into_b</span><span class="ansi-blue-fg">(a, b, root, key_list)</span>
-<span class="ansi-green-intense-fg ansi-bold">    471</span>                 root<span class="ansi-blue-fg">.</span>raise_key_rename_error<span class="ansi-blue-fg">(</span>full_key<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">    472</span>             <span class="ansi-green-fg">else</span><span class="ansi-blue-fg">:</span>
-<span class="ansi-green-fg">--&gt; 473</span><span class="ansi-red-fg">                 </span><span class="ansi-green-fg">raise</span> KeyError<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">&#34;Non-existent config key: {}&#34;</span><span class="ansi-blue-fg">.</span>format<span class="ansi-blue-fg">(</span>full_key<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">)</span>
-<span class="ansi-green-intense-fg ansi-bold">    474</span> 
-<span class="ansi-green-intense-fg ansi-bold">    475</span> 
-
-<span class="ansi-red-fg">KeyError</span>: &#39;Non-existent config key: GRAPH.CONN&#39;</pre>
 </div>
 </div>
 
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">cfg_list</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;GRAPH.STEM&quot;</span><span class="p">,</span> <span class="s2">&quot;resnet_stem&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;GRAPH.UNIT&quot;</span><span class="p">,</span> <span class="s2">&quot;resnet_bottleneck&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;GRAPH.CONN&quot;</span><span class="p">,</span> <span class="s2">&quot;IdentityMapping&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;GRAPH.NUM_NODES&quot;</span><span class="p">,</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">36</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span>
+            <span class="s2">&quot;GRAPH.FOLD&quot;</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span>
+            <span class="s2">&quot;GRAPH.START_ID&quot;</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span>
+           <span class="p">]</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">resnetx</span><span class="p">(</span><span class="n">cfg</span><span class="p">,</span> <span class="n">cfg_list</span><span class="o">=</span><span class="n">cfg_list</span><span class="p">,</span> <span class="n">pretrained</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">c_out</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">cfg_file</span> <span class="o">=</span> <span class="s1">&#39;configs/imagenet/resnet/resnet152.yaml&#39;</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">resnetx</span><span class="p">(</span><span class="n">cfg</span><span class="p">,</span> <span class="n">cfg_file</span><span class="o">=</span><span class="n">cfg_file</span><span class="p">,</span> <span class="n">pretrained</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">c_out</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+</pre></div>
+
+    </div>
 </div>
 </div>
 
@@ -453,7 +409,7 @@ summary: "a folded resnet"
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>&#39;64,894,538&#39;</pre>
+<pre>&#39;63,769,764&#39;</pre>
 </div>
 
 </div>
