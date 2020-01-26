@@ -11,24 +11,16 @@ from torchvision.models.utils import load_state_dict_from_url
 
 
 #Cell
-def get_pred(l:int, start_id:int, d:int=1):
+def get_pred(l:int, d:int=1, start_id:int=None, end_id:int=None):
     "get predecessor layer id."
-    assert l >= 1 and start_id >= d
-    if l < start_id or d == 1:  # if the current layer index is less than the fold depth, or if fold depth == 1
+    if start_id is None: start_id = d
+    if end_id is None: end_id = l
+    assert l >= 1 and start_id >= d and end_id > start_id
+    if l < start_id or l > end_id or d == 1:  # if the current layer index is less than the fold depth, or if fold depth == 1
         pred = l - 1
     else:
         remainder = (l-1-(start_id-d)) % (d-1)
         pred = l - 2 * (1+remainder)
-#         if remainder == 0:
-#             pred = l - 2 * (d-1)
-#         else:
-#             pred = l - 2 * remainder
-#         remainder1 = l % (2*(d-1))
-#         if 1 <= remainder1 <= d-1:
-#             pred = l - 2 * remainder1
-#         else:
-#             remainder2 = (remainder1 + d-1) % (2*(d-1))
-#             pred = l - 2 * remainder2
     return pred
 
 #Cell
@@ -49,8 +41,8 @@ def layer_diff(cur:int, pred:int, num_nodes:tuple):
 #Cell
 class ResNetX(nn.Module):
     "A folded resnet."
-    def __init__(self, Stem, Unit, Conn, fold:int, ni:int, num_nodes:tuple, start_id:int=0, base:int=64, exp:int=2,
-                 bottle_scale:int=1, first_downsample:bool=False,
+    def __init__(self, Stem, Unit, Conn, fold:int, ni:int, num_nodes:tuple, start_id:int=None, end_id:int=None,
+                 base:int=64, exp:int=2, bottle_scale:int=1, first_downsample:bool=False,
                  c_in:int=3, c_out:int=10, **kwargs):
         super(ResNetX, self).__init__()
         # fold depth should be less than the sum length of any two neighboring stages
@@ -75,11 +67,11 @@ class ResNetX(nn.Module):
                 else:
                     units += [Unit(no, no, nh, stride=1, **kwargs)]
 
-                pred = get_pred(cur, start_id, fold) #
+                pred = get_pred(cur, fold, start_id, end_id) #
                 diff = layer_diff(cur, pred, num_nodes)
                 assert diff == 0 or diff == 1 or (diff == 2 and pred == 0), \
                        'cur={}, pred={}, diff={} is not allowed.'.format(cur, pred, diff)
-#                 print('cur = {} , pred = {} ,diff = {}'.format(cur, pred, diff))
+                print('fold = {} , cur = {} , pred = {} ,diff = {}'.format(fold, cur, pred, diff))
                 if diff == 0:
                     idmappings += [Conn(no, no, stride=1)]
                 elif diff == 1:
@@ -92,7 +84,7 @@ class ResNetX(nn.Module):
         self.idmappings = nn.ModuleList(idmappings)
 
         self.classifier = Classifier(nos[-1], c_out)
-        self.start_id, self.fold = start_id, fold
+        self.fold, self.start_id, self.end_id = fold, start_id, end_id
         self.num_nodes = num_nodes
         init_cnn(self)
 
@@ -102,7 +94,7 @@ class ResNetX(nn.Module):
         cur = 0
         for i, (unit, idmapping) in enumerate(zip(self.units, self.idmappings)):
             cur += 1
-            pred = get_pred(cur, self.start_id, self.fold)
+            pred = get_pred(cur, self.fold, self.start_id, self.end_id)
             results[cur % (2*self.fold-1)] = unit(results[(cur-1) % (2*self.fold-1)]) + idmapping(results[pred % (2*self.fold-1)])
         x = results[cur % (2*self.fold-1)]
 
@@ -146,7 +138,7 @@ class ResNetX(nn.Module):
 
 
 #Cell
-def resnet_local_to_pretrained(num_nodes, start_id, fold):
+def resnet_local_to_pretrained(num_nodes, fold, start_id, end_id):
     "mapping from local state_dict to pretrained state_dict. the pretrained model is restricted to torchvision.models.resnet."
     local_to_pretrained = {  # mapping from the names of local modules to the names of pretrained modules
         'stem.0.': 'conv1.',
@@ -161,7 +153,7 @@ def resnet_local_to_pretrained(num_nodes, start_id, fold):
             downsample0 = 'layer' + str(i+1) + '.0.' + 'downsample.0.'
             downsample1 = 'layer' + str(i+1) + '.0.' + 'downsample.1.'
 
-            pred = get_pred(cumsum + j + 1, start_id, fold) #
+            pred = get_pred(cumsum + j + 1, fold, start_id, end_id) #
             diff = layer_diff(cumsum + j + 1, pred, num_nodes)
             if diff == 1:
                 idmapping0 = 'idmappings.' + str(cumsum + j) + '.unit.0.'
@@ -195,11 +187,11 @@ def resnetx(default_cfg:dict, cfg_file:str=None, cfg_list:list=None, pretrained:
     Conn = getattr(sys.modules[__name__], cfg.GRAPH.CONN)
     # start_id >= fold + 1, fold <= 6
     model = ResNetX(Stem=Stem, Unit=Unit, Conn=Conn, fold=cfg.GRAPH.FOLD, ni=cfg.GRAPH.NI, num_nodes=cfg.GRAPH.NUM_NODES,
-                    start_id=cfg.GRAPH.START_ID, base=cfg.GRAPH.BASE, exp=cfg.GRAPH.EXP, bottle_scale=cfg.GRAPH.BOTTLE_SCALE,
+                    start_id=cfg.GRAPH.START_ID, end_id=cfg.GRAPH.END_ID, base=cfg.GRAPH.BASE, exp=cfg.GRAPH.EXP, bottle_scale=cfg.GRAPH.BOTTLE_SCALE,
                     first_downsample=cfg.GRAPH.FIRST_DOWNSAMPLE, **kwargs)
     if pretrained:
         state_dict = load_state_dict_from_url(cfg.URL)
-        local_to_pretrained = resnet_local_to_pretrained(cfg.GRAPH.NUM_NODES,cfg.GRAPH.START_ID, cfg.GRAPH.FOLD)
+        local_to_pretrained = resnet_local_to_pretrained(cfg.GRAPH.NUM_NODES, cfg.GRAPH.FOLD,cfg.GRAPH.START_ID,cfg.GRAPH.END_ID)
         model.my_load_state_dict(state_dict, local_to_pretrained)
         for param in model.parameters(): # freeze all
             param.requires_grad = False
