@@ -71,7 +71,7 @@ class ResNetX(nn.Module):
                 diff = layer_diff(cur, pred, num_nodes)
                 assert diff == 0 or diff == 1 or (diff == 2 and pred == 0), \
                        'cur={}, pred={}, diff={} is not allowed.'.format(cur, pred, diff)
-                print('fold = {} , cur = {} , pred = {} ,diff = {}'.format(fold, cur, pred, diff))
+#                 print('fold = {} , cur = {} , pred = {} ,diff = {}'.format(fold, cur, pred, diff))
                 if diff == 0:
                     idmappings += [Conn(no, no, stride=1)]
                 elif diff == 1:
