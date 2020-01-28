@@ -344,7 +344,7 @@ summary: "a folded resnet"
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>CfgNode({&#39;URL&#39;: &#39;https://download.pytorch.org/models/resnet152-b121ed2d.pth&#39;, &#39;GRAPH&#39;: CfgNode({&#39;NUM_STAGES&#39;: 4, &#39;NUM_NODES&#39;: (3, 8, 36, 3), &#39;NUM_CHANNELS&#39;: (64, 128, 256, 512), &#39;STEM&#39;: &#39;resnet_stem&#39;, &#39;UNIT&#39;: &#39;resnet_bottleneck&#39;, &#39;CONN&#39;: &#39;IdentityMapping&#39;, &#39;FOLD&#39;: 3, &#39;START_ID&#39;: 14, &#39;END_ID&#39;: 48, &#39;NI&#39;: 64, &#39;BASE&#39;: 64, &#39;EXP&#39;: 2, &#39;BOTTLE_SCALE&#39;: 4, &#39;FIRST_DOWNSAMPLE&#39;: False, &#39;DEEP_STEM&#39;: False})})</pre>
+<pre>CfgNode({&#39;URL&#39;: &#39;https://download.pytorch.org/models/resnet152-b121ed2d.pth&#39;, &#39;GRAPH&#39;: CfgNode({&#39;NUM_STAGES&#39;: 4, &#39;NUM_NODES&#39;: (3, 8, 36, 3), &#39;NUM_CHANNELS&#39;: (64, 128, 256, 512), &#39;STEM&#39;: &#39;resnet_stem&#39;, &#39;UNIT&#39;: &#39;resnet_bottleneck&#39;, &#39;CONN&#39;: &#39;IdentityMapping&#39;, &#39;FOLD&#39;: 2, &#39;START_ID&#39;: 14, &#39;END_ID&#39;: 47, &#39;NI&#39;: 64, &#39;BASE&#39;: 64, &#39;EXP&#39;: 2, &#39;BOTTLE_SCALE&#39;: 4, &#39;FIRST_DOWNSAMPLE&#39;: False, &#39;DEEP_STEM&#39;: False})})</pre>
 </div>
 
 </div>
@@ -380,69 +380,6 @@ summary: "a folded resnet"
 </pre></div>
 
     </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>fold = 2 , cur = 1 , pred = 0 ,diff = 1
-fold = 2 , cur = 2 , pred = 1 ,diff = 0
-fold = 2 , cur = 3 , pred = 2 ,diff = 0
-fold = 2 , cur = 4 , pred = 3 ,diff = 1
-fold = 2 , cur = 5 , pred = 4 ,diff = 0
-fold = 2 , cur = 6 , pred = 5 ,diff = 0
-fold = 2 , cur = 7 , pred = 6 ,diff = 0
-fold = 2 , cur = 8 , pred = 7 ,diff = 0
-fold = 2 , cur = 9 , pred = 8 ,diff = 0
-fold = 2 , cur = 10 , pred = 9 ,diff = 0
-fold = 2 , cur = 11 , pred = 10 ,diff = 0
-fold = 2 , cur = 12 , pred = 11 ,diff = 1
-fold = 2 , cur = 13 , pred = 12 ,diff = 0
-fold = 2 , cur = 14 , pred = 12 ,diff = 0
-fold = 2 , cur = 15 , pred = 13 ,diff = 0
-fold = 2 , cur = 16 , pred = 14 ,diff = 0
-fold = 2 , cur = 17 , pred = 15 ,diff = 0
-fold = 2 , cur = 18 , pred = 16 ,diff = 0
-fold = 2 , cur = 19 , pred = 17 ,diff = 0
-fold = 2 , cur = 20 , pred = 18 ,diff = 0
-fold = 2 , cur = 21 , pred = 19 ,diff = 0
-fold = 2 , cur = 22 , pred = 20 ,diff = 0
-fold = 2 , cur = 23 , pred = 21 ,diff = 0
-fold = 2 , cur = 24 , pred = 22 ,diff = 0
-fold = 2 , cur = 25 , pred = 23 ,diff = 0
-fold = 2 , cur = 26 , pred = 24 ,diff = 0
-fold = 2 , cur = 27 , pred = 25 ,diff = 0
-fold = 2 , cur = 28 , pred = 26 ,diff = 0
-fold = 2 , cur = 29 , pred = 27 ,diff = 0
-fold = 2 , cur = 30 , pred = 28 ,diff = 0
-fold = 2 , cur = 31 , pred = 29 ,diff = 0
-fold = 2 , cur = 32 , pred = 30 ,diff = 0
-fold = 2 , cur = 33 , pred = 31 ,diff = 0
-fold = 2 , cur = 34 , pred = 32 ,diff = 0
-fold = 2 , cur = 35 , pred = 33 ,diff = 0
-fold = 2 , cur = 36 , pred = 34 ,diff = 0
-fold = 2 , cur = 37 , pred = 35 ,diff = 0
-fold = 2 , cur = 38 , pred = 36 ,diff = 0
-fold = 2 , cur = 39 , pred = 37 ,diff = 0
-fold = 2 , cur = 40 , pred = 38 ,diff = 0
-fold = 2 , cur = 41 , pred = 39 ,diff = 0
-fold = 2 , cur = 42 , pred = 40 ,diff = 0
-fold = 2 , cur = 43 , pred = 41 ,diff = 0
-fold = 2 , cur = 44 , pred = 42 ,diff = 0
-fold = 2 , cur = 45 , pred = 43 ,diff = 0
-fold = 2 , cur = 46 , pred = 44 ,diff = 0
-fold = 2 , cur = 47 , pred = 45 ,diff = 0
-fold = 2 , cur = 48 , pred = 47 ,diff = 1
-fold = 2 , cur = 49 , pred = 48 ,diff = 0
-fold = 2 , cur = 50 , pred = 49 ,diff = 0
-</pre>
-</div>
-</div>
-
 </div>
 </div>
 
@@ -1277,7 +1214,7 @@ fold = 2 , cur = 50 , pred = 49 ,diff = 0
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>&#39;63,769,764&#39;</pre>
+<pre>&#39;60,225,700&#39;</pre>
 </div>
 
 </div>
@@ -1338,7 +1275,7 @@ fold = 2 , cur = 50 , pred = 49 ,diff = 0
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>&#39;torchvision.models.resnet&#39;</pre>
+<pre>&#39;__main__&#39;</pre>
 </div>
 
 </div>

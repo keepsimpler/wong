@@ -4,6 +4,7 @@ import torch.utils.checkpoint as cp # checkpointing to elimit memory
 
 torch.backends.cudnn.benchmark = True
 
+import random
 import sys
 from collections import OrderedDict
 from functools import partial
