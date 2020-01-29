@@ -38,14 +38,18 @@ index = {"ShuffleBlock": "00_core.ipynb",
          "ResNetX": "04_resnetx.ipynb",
          "resnet_local_to_pretrained": "04_resnetx.ipynb",
          "resnetx": "04_resnetx.ipynb",
-         "get_num_nodes": "05_automl.ipynb"}
+         "get_num_nodes": "05_automl.ipynb",
+         "InitBlock": "07_resnetx2.ipynb",
+         "FoldBlock": "07_resnetx2.ipynb",
+         "ResNetX2": "07_resnetx2.ipynb"}
 
 modules = ["core.py",
            "config.py",
            "graph.py",
            "network.py",
            "resnetx.py",
-           "automl.py"]
+           "automl.py",
+           "resnetx2.py"]
 
 git_url = "https://github.com/keepsimpler/wong/tree/master/"
 

@@ -27,6 +27,9 @@ entries:
     - output: web,pdf
       title: Title
       url: /datasets
+    - output: web,pdf
+      title: ResNetX2
+      url: /resnetx2
     output: web
     title: wong
   output: web

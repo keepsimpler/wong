@@ -6,6 +6,7 @@
     "Graph": "/graph",
     "Network": "/network",
     "ResNetX": "/resnetx",
-    "Title": "/datasets"
+    "Title": "/datasets",
+    "ResNetX2": "/resnetx2"
   }
 }

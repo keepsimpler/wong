@@ -34,10 +34,11 @@ class OprtType(Enum):
     Shuffle = 4
 
 #Cell
-def conv_unit(ni:int, no:int, seq:tuple, ks:int=3, stride:int=1, groups:int=1, zero_bn:bool=False, act_inplace=True):
+def conv_unit(ni:int, seq:tuple, no:int=None, ks:int=3, stride:int=1, groups:int=1, zero_bn:bool=False, act_inplace:bool=True):
     """
     The basic convolutional operation, which is combination of operators such as conv, bn, relu, etc.
     """
+    if no is None: no = ni
     unit = []
     has_conv = False # if has conv operator
     for e in seq:
@@ -73,15 +74,15 @@ relu_conv_bn_shuffle = partial(conv_unit, seq = (OprtType.ReLU, OprtType.Conv2d,
 #Cell
 def pack_relu_conv_bn(ni, no, nh, stride:int=1, groups:int=1, zero_bn:bool=True):
     "Packed relu_conv_bn unit"
-    return relu_conv_bn(ni, no, stride=stride, groups=groups, zero_bn=zero_bn)
+    return relu_conv_bn(ni, no=no, stride=stride, groups=groups, zero_bn=zero_bn)
 
 def pack_bn_relu_conv(ni, no, nh, stride:int=1, groups:int=1, zero_bn:bool=True):
     """"""
-    return bn_relu_conv(ni, no, stride=stride, groups=groups, zero_bn=zero_bn)
+    return bn_relu_conv(ni, no=no, stride=stride, groups=groups, zero_bn=zero_bn)
 
 def pack_relu_conv_bn_shuffle(ni, no, nh, stride:int=1, groups:int=1, zero_bn:bool=True):
     """"""
-    return relu_conv_bn_shuffle(ni, no, stride=stride, groups=groups, zero_bn=zero_bn)
+    return relu_conv_bn_shuffle(ni, no=no, stride=stride, groups=groups, zero_bn=zero_bn)
 
 
 #Cell
@@ -93,8 +94,8 @@ def resnet_basicblock(ni, no, nh, stride:int=1):
     Deep Residual Learning for Image Recognition:
     https://arxiv.org/abs/1512.03385
     """
-    return nn.Sequential(*relu_conv_bn(ni, nh, stride=stride),
-                         *relu_conv_bn(nh, no))
+    return nn.Sequential(*relu_conv_bn(ni, no=nh, stride=stride),
+                         *relu_conv_bn(nh, no=no))
 
 def resnet_bottleneck(ni, no, nh, stride:int=1, groups:int=1, zero_bn=True):
     """
@@ -104,9 +105,9 @@ def resnet_bottleneck(ni, no, nh, stride:int=1, groups:int=1, zero_bn=True):
     Deep Residual Learning for Image Recognition:
     https://arxiv.org/abs/1512.03385
     """
-    return nn.Sequential(*relu_conv_bn(ni, nh, ks=1),
-                         *relu_conv_bn(nh, nh, stride=stride, groups=groups),
-                         *relu_conv_bn(nh, no, ks=1, zero_bn=zero_bn))
+    return nn.Sequential(*relu_conv_bn(ni, no=nh, ks=1),
+                         *relu_conv_bn(nh, no=nh, stride=stride, groups=groups),
+                         *relu_conv_bn(nh, no=no, ks=1, zero_bn=zero_bn))
 
 #Cell
 # residential block
@@ -119,13 +120,13 @@ def preresnet_basicblock(ni, no, nh, stride:int=1):
     Identity Mappings in Deep Residual Networks:
     https://arxiv.org/abs/1603.05027
     """
-    return nn.Sequential(*bn_relu_conv(ni, nh, stride=stride),
-                         *bn_relu_conv(nh, no))
+    return nn.Sequential(*bn_relu_conv(ni, no=nh, stride=stride),
+                         *bn_relu_conv(nh, no=no))
 
 def preresnet_bottleneck(ni, no, nh, stride:int=1, groups:int=1, zero_bn=True):
-    return nn.Sequential(*bn_relu_conv(ni, nh, ks=1),
-                         *bn_relu_conv(nh, nh, stride=stride, groups=groups),
-                         *bn_relu_conv(nh, no, ks=1, zero_bn=zero_bn))
+    return nn.Sequential(*bn_relu_conv(ni, no=nh, ks=1),
+                         *bn_relu_conv(nh, no=nh, stride=stride, groups=groups),
+                         *bn_relu_conv(nh, no=no, ks=1, zero_bn=zero_bn))
 
 
 #Cell
@@ -137,17 +138,19 @@ def xception(ni:int, no:int, nh:int, ks:int=3, stride:int=1, zero_bn:bool=False)
     Xception: Deep Learning with Depthwise Separable Convolutions:
     https://arxiv.org/abs/1610.02357
     """
-    return nn.Sequential(*relu_conv(ni, nh, ks=ks, stride=stride, groups=ni),
-                         *conv_bn(nh, no, ks=1, zero_bn=zero_bn)
+    return nn.Sequential(*relu_conv(ni, no=nh, ks=ks, stride=stride, groups=ni),
+                         *conv_bn(nh, no=no, ks=1, zero_bn=zero_bn)
                         )
 
 #Cell
-def mbconv(ni:int, no:int, nh:int, ks:int=3, stride:int=1, groups:int=None, zero_bn:bool=False):
+def mbconv(ni:int, no:int=None, nh:int=None, ks:int=3, stride:int=1, groups:int=None, zero_bn:bool=False):
     "Mobile Inverted Bottleneck block in MobileNetV2"
+    if no is None: no = ni
+    if nh is None: nh = ni
     if groups is None: groups = nh
-    return nn.Sequential(*conv_bn_relu(ni, nh, ks=1, stride=1),
-                         *conv_bn_relu(nh, nh, ks=ks, stride=stride, groups=groups),
-                         *conv_bn(nh, no, ks=1, stride=1, zero_bn=zero_bn))
+    return nn.Sequential(*conv_bn_relu(ni, no=nh, ks=1, stride=1),
+                         *conv_bn_relu(nh, no=nh, ks=ks, stride=stride, groups=groups),
+                         *conv_bn(nh, no=no, ks=1, stride=1, zero_bn=zero_bn))
 
 #Cell
 def resnet_stem(ni:int=3, no:int=64):
@@ -158,9 +161,9 @@ def resnet_stem(ni:int=3, no:int=64):
     return stem
 
 def resnet_stem_deep(ni:int=3, no:int=64):
-    stem = nn.Sequential(*conv_bn_relu(ni, no, stride=2),  #downsample
-                         *conv_bn_relu(no, no, stride=1),
-                         *conv_bn_relu(no, no, stride=1),
+    stem = nn.Sequential(*conv_bn_relu(ni, no=no, stride=2),  #downsample
+                         *conv_bn_relu(no, no=no, stride=1),
+                         *conv_bn_relu(no, no=no, stride=1),
                          nn.MaxPool2d(kernel_size=3, stride=2, padding=1)
                  )
     return stem
@@ -189,7 +192,7 @@ class IdentityMappingMaxPool(nn.Module):
             downsample = nn.MaxPool2d(kernel_size=3, stride=stride, padding=1)
             unit.append(downsample)
         if ni != no:
-            unit += conv_bn(ni, no, ks=1) #.children()  #, zero_bn=False
+            unit += conv_bn(ni, no=no, ks=1) #.children()  #, zero_bn=False
         self.unit = nn.Sequential(*unit)
     def forward(self, x):
         out = self.unit(x)
@@ -216,7 +219,7 @@ class IdentityMappingAvgPool(nn.Module):
             downsample = nn.AvgPool2d(kernel_size=3, stride=stride, padding=1)
             unit.append(downsample)
         if ni != no:
-            unit += conv_bn(ni, no, ks=1) #.children()  #, zero_bn=False
+            unit += conv_bn(ni, no=no, ks=1) #.children()  #, zero_bn=False
         self.unit = nn.Sequential(*unit)
     def forward(self, x):
         out = self.unit(x)
@@ -237,7 +240,7 @@ class IdentityMapping(nn.Module):
         assert stride == 1 or stride == 2
         unit = []
         if not (ni == no and stride == 1):
-            unit += conv_bn(ni, no, ks=1, stride=stride) #.children()  #, zero_bn=False
+            unit += conv_bn(ni, no=no, ks=1, stride=stride) #.children()  #, zero_bn=False
         self.unit = nn.Sequential(*unit)
     def forward(self, x):
         out = self.unit(x)
