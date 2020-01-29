@@ -51,7 +51,7 @@ class ResNetX(nn.Module):
         origin_ni = ni
         num_stages = len(num_nodes)
         nhs = [base * exp ** i for i in range(num_stages)]
-        nos = [nh * bottle_scale for nh in nhs]
+        nos = [int(nh * bottle_scale) for nh in nhs]
         strides = [1 if i==0 and not first_downsample else 2 for i in range(num_stages)]
 #         print('nhs=', nhs, 'nos=', nos, 'nus=', nus, 'strides=', strides)
 
