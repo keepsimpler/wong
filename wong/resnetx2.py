@@ -23,6 +23,7 @@ class InitBlock(nn.Module):
         xs = [x]
         for i in range(self.fold-1):
             xs += [xs[i] + self.units[i](xs[i])]
+        xs.reverse()
         return xs
 
 #Cell
@@ -78,7 +79,7 @@ class ResNetX2(nn.Module):
 
         self.units = nn.ModuleList(units)
 
-        self.classifier = Classifier(ni*fold, c_out)
+        self.classifier = Classifier(ni, c_out) #*fold
         self.fold = fold
         self.num_nodes = num_nodes
         init_cnn(self)
@@ -88,7 +89,7 @@ class ResNetX2(nn.Module):
         xs = self.init(x)
         for unit in self.units:
             xs = unit(*xs)
-        x = torch.cat(xs,1)
+        x =  torch.cat(xs,1)
 
         x = self.classifier(x)
         return x
