@@ -89,7 +89,7 @@ class ResNetX2(nn.Module):
         xs = self.init(x)
         for unit in self.units:
             xs = unit(*xs)
-        x =  torch.cat(xs,1)
+        x = xs[0] #torch.cat(xs,1)
 
         x = self.classifier(x)
         return x
