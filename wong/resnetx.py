@@ -55,7 +55,7 @@ class ResNetX(nn.Module):
         strides = [1 if i==0 and not first_downsample else 2 for i in range(num_stages)]
 #         print('nhs=', nhs, 'nos=', nos, 'nus=', nus, 'strides=', strides)
 
-        self.stem = Stem(c_in, ni) # , deep_stem
+        self.stem = Stem(c_in, no=ni) # , deep_stem
 
         units = []
         idmappings = []
