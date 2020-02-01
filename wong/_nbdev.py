@@ -5,6 +5,7 @@ __all__ = ["index", "modules", "custom_doc_links", "git_url"]
 index = {"ShuffleBlock": "00_core.ipynb",
          "OprtType": "00_core.ipynb",
          "conv_unit": "00_core.ipynb",
+         "conv": "00_core.ipynb",
          "relu_conv_bn": "00_core.ipynb",
          "conv_bn_relu": "00_core.ipynb",
          "bn_relu_conv": "00_core.ipynb",
