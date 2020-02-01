@@ -744,7 +744,38 @@ avgpool</li>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="IdentityMapping" class="doc_header"><code>class</code> <code>IdentityMapping</code><a href="https://github.com/keepsimpler/wong/tree/master/wong/core.py#L232" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>IdentityMapping</code>(<strong><code>ni</code></strong>:<code>int</code>, <strong><code>no</code></strong>:<code>int</code>, <strong><code>stride</code></strong>:<code>int</code>=<em><code>1</code></em>) :: <code>Module</code></p>
+<h2 id="IdentityMappingConv" class="doc_header"><code>class</code> <code>IdentityMappingConv</code><a href="https://github.com/keepsimpler/wong/tree/master/wong/core.py#L232" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>IdentityMappingConv</code>(<strong><code>ni</code></strong>:<code>int</code>, <strong><code>no</code></strong>:<code>int</code>, <strong><code>stride</code></strong>:<code>int</code>=<em><code>1</code></em>) :: <code>Module</code></p>
+</blockquote>
+<p>Identity mapping of ResNet.
+Identity mapping of ResNet, two cases:</p>
+<ol>
+<li>stride == 1 and ni == no
+input == output</li>
+<li>else
+1x1 conv with stride</li>
+</ol>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<h2 id="IdentityMapping" class="doc_header"><code>class</code> <code>IdentityMapping</code><a href="https://github.com/keepsimpler/wong/tree/master/wong/core.py#L253" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>IdentityMapping</code>(<strong><code>ni</code></strong>:<code>int</code>, <strong><code>no</code></strong>:<code>int</code>, <strong><code>stride</code></strong>:<code>int</code>=<em><code>1</code></em>) :: <code>Module</code></p>
 </blockquote>
 <p>Identity mapping of ResNet.
 Identity mapping of ResNet, two cases:</p>
@@ -784,10 +815,9 @@ input == output</li>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>(IdentityMapping(
+<pre>(IdentityMappingConv(
    (unit): Sequential(
      (0): Conv2d(16, 32, kernel_size=(1, 1), stride=(2, 2), bias=False)
-     (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
    )
  ), IdentityMapping(
    (unit): Sequential(
@@ -859,7 +889,7 @@ input == output</li>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="Classifier" class="doc_header"><code>class</code> <code>Classifier</code><a href="https://github.com/keepsimpler/wong/tree/master/wong/core.py#L253" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>Classifier</code>(<strong><code>ni</code></strong>, <strong><code>no</code></strong>) :: <code>Module</code></p>
+<h2 id="Classifier" class="doc_header"><code>class</code> <code>Classifier</code><a href="https://github.com/keepsimpler/wong/tree/master/wong/core.py#L274" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>Classifier</code>(<strong><code>ni</code></strong>, <strong><code>no</code></strong>) :: <code>Module</code></p>
 </blockquote>
 <p>Usually work as the final operator for image processing (classification, object detection, etc.)</p>
 <p>Including:
@@ -886,7 +916,7 @@ a linear op, which perform classification.</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="ClassifierBNReLU" class="doc_header"><code>class</code> <code>ClassifierBNReLU</code><a href="https://github.com/keepsimpler/wong/tree/master/wong/core.py#L273" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>ClassifierBNReLU</code>(<strong><code>ni</code></strong>, <strong><code>no</code></strong>) :: <code>Module</code></p>
+<h2 id="ClassifierBNReLU" class="doc_header"><code>class</code> <code>ClassifierBNReLU</code><a href="https://github.com/keepsimpler/wong/tree/master/wong/core.py#L294" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>ClassifierBNReLU</code>(<strong><code>ni</code></strong>, <strong><code>no</code></strong>) :: <code>Module</code></p>
 </blockquote>
 <p>Usually work as the final operator for image processing (classification, object detection, etc.)</p>
 <p>Including:
@@ -950,7 +980,7 @@ a linear op, which perform classification.</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="init_cnn" class="doc_header"><code>init_cnn</code><a href="https://github.com/keepsimpler/wong/tree/master/wong/core.py#L297" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>init_cnn</code>(<strong><code>m</code></strong>)</p>
+<h4 id="init_cnn" class="doc_header"><code>init_cnn</code><a href="https://github.com/keepsimpler/wong/tree/master/wong/core.py#L318" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>init_cnn</code>(<strong><code>m</code></strong>)</p>
 </blockquote>
 <p>copy from <a href="https://github.com/fastai/fastai/blob/master/fastai/vision/models/xresnet.py">https://github.com/fastai/fastai/blob/master/fastai/vision/models/xresnet.py</a></p>
 
@@ -974,7 +1004,7 @@ a linear op, which perform classification.</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="num_params" class="doc_header"><code>num_params</code><a href="https://github.com/keepsimpler/wong/tree/master/wong/core.py#L305" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>num_params</code>(<strong><code>net</code></strong>:<code>Module</code>)</p>
+<h4 id="num_params" class="doc_header"><code>num_params</code><a href="https://github.com/keepsimpler/wong/tree/master/wong/core.py#L326" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>num_params</code>(<strong><code>net</code></strong>:<code>Module</code>)</p>
 </blockquote>
 <p>Number of parameters of a neural network</p>
 

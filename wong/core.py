@@ -4,7 +4,7 @@ __all__ = ['ShuffleBlock', 'OprtType', 'conv_unit', 'conv', 'relu_conv_bn', 'con
            'conv_bn', 'relu_conv_bn_shuffle', 'pack_relu_conv_bn', 'pack_bn_relu_conv', 'pack_relu_conv_bn_shuffle',
            'resnet_basicblock', 'resnet_bottleneck', 'preresnet_basicblock', 'preresnet_bottleneck', 'xception',
            'mbconv', 'resnet_stem', 'resnet_stem_deep', 'IdentityMappingMaxPool', 'IdentityMappingAvgPool',
-           'IdentityMapping', 'Classifier', 'ClassifierBNReLU', 'init_cnn', 'num_params']
+           'IdentityMappingConv', 'IdentityMapping', 'Classifier', 'ClassifierBNReLU', 'init_cnn', 'num_params']
 
 #Cell
 from .imports import *
@@ -223,6 +223,27 @@ class IdentityMappingAvgPool(nn.Module):
             unit.append(downsample)
         if ni != no:
             unit += conv_bn(ni, no=no, ks=1) #.children()  #, zero_bn=False
+        self.unit = nn.Sequential(*unit)
+    def forward(self, x):
+        out = self.unit(x)
+        return out
+
+#Cell
+class IdentityMappingConv(nn.Module):
+    """ Identity mapping of ResNet.
+    Identity mapping of ResNet, two cases:
+    1.  stride == 1 and ni == no
+        input == output
+    2.  else
+        1x1 conv with stride
+
+    """
+    def __init__(self, ni:int, no:int, stride:int=1):
+        super(IdentityMappingConv, self).__init__()
+        assert stride == 1 or stride == 2
+        unit = []
+        if not (ni == no and stride == 1):
+            unit += conv(ni, no=no, ks=1, stride=stride) #.children()  #, zero_bn=False
         self.unit = nn.Sequential(*unit)
     def forward(self, x):
         out = self.unit(x)
