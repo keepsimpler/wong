@@ -4,7 +4,7 @@ __all__ = ['ShuffleBlock', 'OprtType', 'conv_unit', 'conv', 'relu_conv_bn', 'con
            'conv_bn', 'relu_conv_bn_shuffle', 'pack_relu_conv_bn', 'pack_bn_relu_conv', 'pack_relu_conv_bn_shuffle',
            'resnet_basicblock', 'resnet_bottleneck', 'preresnet_basicblock', 'preresnet_bottleneck', 'xception',
            'mbconv', 'resnet_stem', 'resnet_stem_deep', 'IdentityMappingMaxPool', 'IdentityMappingAvgPool',
-           'IdentityMapping', 'Classifier', 'init_cnn', 'num_params']
+           'IdentityMapping', 'Classifier', 'ClassifierBNReLU', 'init_cnn', 'num_params']
 
 #Cell
 from .imports import *
@@ -264,6 +264,30 @@ class Classifier(nn.Module):
         self.fc = nn.Linear(ni, no)
 
     def forward(self, x):
+        out = self.adaptivepool(x)  # out tensor (N, ni, 1, 1)
+        out = out.view(out.size(0), -1)  # out tensor (N, ni)
+        out = self.fc(out)  # out tensor (N, no)
+        return out
+
+#Cell
+class ClassifierBNReLU(nn.Module):
+    """
+    Usually work as the final operator for image processing (classification, object detection, etc.)
+
+    Including:
+    an average pooling op, which downsampling image resolution to 1x1.
+    a linear op, which perform classification.
+    """
+    def __init__(self, ni, no):
+        super(ClassifierBNReLU, self).__init__()
+        self.bn = nn.BatchNorm2d(ni)
+        self.relu = nn.ReLU(inplace=True)
+        self.adaptivepool = nn.AdaptiveAvgPool2d((1,1))
+        self.fc = nn.Linear(ni, no)
+
+    def forward(self, x):
+        x = self.bn(x)
+        x = self.relu(x)
         out = self.adaptivepool(x)  # out tensor (N, ni, 1, 1)
         out = out.view(out.size(0), -1)  # out tensor (N, ni)
         out = self.fc(out)  # out tensor (N, no)
