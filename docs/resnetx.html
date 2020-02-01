@@ -252,7 +252,7 @@ summary: "a folded resnet"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="ResNetX" class="doc_header"><code>class</code> <code>ResNetX</code><a href="https://github.com/keepsimpler/wong/tree/master/wong/resnetx.py#L42" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>ResNetX</code>(<strong><code>Stem</code></strong>, <strong><code>Unit</code></strong>, <strong><code>Conn</code></strong>, <strong><code>fold</code></strong>:<code>int</code>, <strong><code>ni</code></strong>:<code>int</code>, <strong><code>num_nodes</code></strong>:<code>tuple</code>, <strong><code>start_id</code></strong>:<code>int</code>=<em><code>None</code></em>, <strong><code>end_id</code></strong>:<code>int</code>=<em><code>None</code></em>, <strong><code>base</code></strong>:<code>int</code>=<em><code>64</code></em>, <strong><code>exp</code></strong>:<code>int</code>=<em><code>2</code></em>, <strong><code>bottle_scale</code></strong>:<code>int</code>=<em><code>1</code></em>, <strong><code>first_downsample</code></strong>:<code>bool</code>=<em><code>False</code></em>, <strong><code>c_in</code></strong>:<code>int</code>=<em><code>3</code></em>, <strong><code>c_out</code></strong>:<code>int</code>=<em><code>10</code></em>, <strong>**<code>kwargs</code></strong>) :: <code>Module</code></p>
+<h2 id="ResNetX" class="doc_header"><code>class</code> <code>ResNetX</code><a href="https://github.com/keepsimpler/wong/tree/master/wong/resnetx.py#L42" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>ResNetX</code>(<strong><code>Stem</code></strong>, <strong><code>Unit</code></strong>, <strong><code>Conn</code></strong>, <strong><code>Tail</code></strong>, <strong><code>fold</code></strong>:<code>int</code>, <strong><code>ni</code></strong>:<code>int</code>, <strong><code>num_nodes</code></strong>:<code>tuple</code>, <strong><code>start_id</code></strong>:<code>int</code>=<em><code>None</code></em>, <strong><code>end_id</code></strong>:<code>int</code>=<em><code>None</code></em>, <strong><code>base</code></strong>:<code>int</code>=<em><code>64</code></em>, <strong><code>exp</code></strong>:<code>int</code>=<em><code>2</code></em>, <strong><code>bottle_scale</code></strong>:<code>int</code>=<em><code>1</code></em>, <strong><code>first_downsample</code></strong>:<code>bool</code>=<em><code>False</code></em>, <strong><code>c_in</code></strong>:<code>int</code>=<em><code>3</code></em>, <strong><code>c_out</code></strong>:<code>int</code>=<em><code>10</code></em>, <strong>**<code>kwargs</code></strong>) :: <code>Module</code></p>
 </blockquote>
 <p>A folded resnet.</p>
 
@@ -344,7 +344,7 @@ summary: "a folded resnet"
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>CfgNode({&#39;URL&#39;: &#39;https://download.pytorch.org/models/resnet152-b121ed2d.pth&#39;, &#39;GRAPH&#39;: CfgNode({&#39;NUM_STAGES&#39;: 4, &#39;NUM_NODES&#39;: (3, 8, 36, 3), &#39;NUM_CHANNELS&#39;: (64, 128, 256, 512), &#39;STEM&#39;: &#39;resnet_stem&#39;, &#39;UNIT&#39;: &#39;mbconv&#39;, &#39;CONN&#39;: &#39;IdentityMapping&#39;, &#39;FOLD&#39;: 2, &#39;START_ID&#39;: 14, &#39;END_ID&#39;: 47, &#39;NI&#39;: 64, &#39;BASE&#39;: 64, &#39;EXP&#39;: 2, &#39;BOTTLE_SCALE&#39;: 0.5, &#39;FIRST_DOWNSAMPLE&#39;: False, &#39;DEEP_STEM&#39;: False})})</pre>
+<pre>CfgNode({&#39;URL&#39;: &#39;&#39;, &#39;GRAPH&#39;: CfgNode({&#39;NUM_STAGES&#39;: 4, &#39;NUM_NODES&#39;: (3, 8, 36, 3), &#39;NUM_CHANNELS&#39;: (64, 128, 256, 512), &#39;STEM&#39;: &#39;&#39;, &#39;UNIT&#39;: &#39;&#39;, &#39;CONN&#39;: &#39;&#39;, &#39;TAIL&#39;: &#39;&#39;, &#39;FOLD&#39;: 1, &#39;START_ID&#39;: 0, &#39;END_ID&#39;: 0, &#39;NI&#39;: 64, &#39;BASE&#39;: 64, &#39;EXP&#39;: 2, &#39;BOTTLE_SCALE&#39;: 4.0, &#39;FIRST_DOWNSAMPLE&#39;: False, &#39;DEEP_STEM&#39;: False})})</pre>
 </div>
 
 </div>
@@ -366,6 +366,7 @@ summary: "a folded resnet"
 <span class="n">cfg_list</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;GRAPH.STEM&quot;</span><span class="p">,</span> <span class="s2">&quot;resnet_stem&quot;</span><span class="p">,</span>
             <span class="s2">&quot;GRAPH.UNIT&quot;</span><span class="p">,</span> <span class="s2">&quot;mbconv&quot;</span><span class="p">,</span>  <span class="c1"># resnet_bottleneck</span>
             <span class="s2">&quot;GRAPH.CONN&quot;</span><span class="p">,</span> <span class="s2">&quot;IdentityMapping&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;GRAPH.TAIL&quot;</span><span class="p">,</span> <span class="s2">&quot;Classifier&quot;</span><span class="p">,</span>
             <span class="s2">&quot;GRAPH.NUM_NODES&quot;</span><span class="p">,</span> <span class="n">num_nodes</span><span class="p">,</span>
             <span class="s2">&quot;GRAPH.FOLD&quot;</span><span class="p">,</span> <span class="n">fold</span><span class="p">,</span>
             <span class="s2">&quot;GRAPH.START_ID&quot;</span><span class="p">,</span> <span class="n">start_id</span><span class="p">,</span>
@@ -1095,8 +1096,8 @@ summary: "a folded resnet"
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">cfg_file</span> <span class="o">=</span> <span class="s1">&#39;configs/imagenet/resnet/resnet152.yaml&#39;</span>
-<span class="n">model</span> <span class="o">=</span> <span class="n">resnetx</span><span class="p">(</span><span class="n">cfg</span><span class="p">,</span> <span class="n">cfg_file</span><span class="o">=</span><span class="n">cfg_file</span><span class="p">,</span> <span class="n">pretrained</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">c_out</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># cfg_file = &#39;configs/imagenet/resnet/resnet152.yaml&#39;</span>
+<span class="c1"># model = resnetx(cfg, cfg_file=cfg_file, pretrained=False, c_out=100)</span>
 </pre></div>
 
     </div>

@@ -41,7 +41,7 @@ def layer_diff(cur:int, pred:int, num_nodes:tuple):
 #Cell
 class ResNetX(nn.Module):
     "A folded resnet."
-    def __init__(self, Stem, Unit, Conn, fold:int, ni:int, num_nodes:tuple, start_id:int=None, end_id:int=None,
+    def __init__(self, Stem, Unit, Conn, Tail, fold:int, ni:int, num_nodes:tuple, start_id:int=None, end_id:int=None,
                  base:int=64, exp:int=2, bottle_scale:int=1, first_downsample:bool=False,
                  c_in:int=3, c_out:int=10, **kwargs):
         super(ResNetX, self).__init__()
@@ -83,7 +83,7 @@ class ResNetX(nn.Module):
         self.units = nn.ModuleList(units)
         self.idmappings = nn.ModuleList(idmappings)
 
-        self.classifier = Classifier(nos[-1], c_out)
+        self.classifier = Tail(nos[-1], c_out)
         self.fold, self.start_id, self.end_id = fold, start_id, end_id
         self.num_nodes = num_nodes
         init_cnn(self)
@@ -185,8 +185,9 @@ def resnetx(default_cfg:dict, cfg_file:str=None, cfg_list:list=None, pretrained:
     Stem = getattr(sys.modules[__name__], cfg.GRAPH.STEM)
     Unit = getattr(sys.modules[__name__], cfg.GRAPH.UNIT)
     Conn = getattr(sys.modules[__name__], cfg.GRAPH.CONN)
+    Tail = getattr(sys.modules[__name__], cfg.GRAPH.TAIL)
     # start_id >= fold + 1, fold <= 6
-    model = ResNetX(Stem=Stem, Unit=Unit, Conn=Conn, fold=cfg.GRAPH.FOLD, ni=cfg.GRAPH.NI, num_nodes=cfg.GRAPH.NUM_NODES,
+    model = ResNetX(Stem=Stem, Unit=Unit, Conn=Conn, Tail=Tail, fold=cfg.GRAPH.FOLD, ni=cfg.GRAPH.NI, num_nodes=cfg.GRAPH.NUM_NODES,
                     start_id=cfg.GRAPH.START_ID, end_id=cfg.GRAPH.END_ID, base=cfg.GRAPH.BASE, exp=cfg.GRAPH.EXP, bottle_scale=cfg.GRAPH.BOTTLE_SCALE,
                     first_downsample=cfg.GRAPH.FIRST_DOWNSAMPLE, **kwargs)
     if pretrained:
