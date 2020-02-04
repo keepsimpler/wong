@@ -95,7 +95,11 @@ class ResNetX(nn.Module):
         for i, (unit, idmapping) in enumerate(zip(self.units, self.idmappings)):
             cur += 1
             pred = get_pred(cur, self.fold, self.start_id, self.end_id)
-            results[cur % (2*self.fold-1)] = unit(results[(cur-1) % (2*self.fold-1)]) + idmapping(results[pred % (2*self.fold-1)])
+            diff = layer_diff(self.cur, self.pred, self.num_nodes)
+            if diff == 0:
+                results[cur % (2*self.fold-1)] = unit(results[(cur-1) % (2*self.fold-1)]) + idmapping(results[pred % (2*self.fold-1)])
+            else:
+                results[cur % (2*self.fold-1)] = unit(results[(cur-1) % (2*self.fold-1)])
         x = results[cur % (2*self.fold-1)]
 
         x = self.classifier(x)
