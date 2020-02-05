@@ -77,6 +77,8 @@ class ExpandBlock(nn.Module):
         if self.stride == 2:
             for i in range(len(xs)):
                 xs[i] = self.pool(xs[i])
+        if self.fold2 <= self.fold1:
+            return xs[:self.fold2]
         xs.reverse()
         for i in range(self.fold2 - self.fold1):
             xs.append(self.units[i](xs[-1]) + xs[-1])
@@ -86,21 +88,19 @@ class ExpandBlock(nn.Module):
 #Cell
 class ResNetX2(nn.Module):
     "A folded resnet."
-    def __init__(self, Stem, Unit, fold:int, ni:int, num_nodes:tuple, exp:int=1,
+    def __init__(self, Stem, Unit, folds:tuple, ni:int, num_nodes:tuple,
                  bottle_scale:int=1, first_downsample:bool=False,
                  c_in:int=3, c_out:int=10, **kwargs):
         super(ResNetX2, self).__init__()
         num_stages = len(num_nodes)
         nh = ni * bottle_scale
         strides = [1 if i==0 and not first_downsample else 2 for i in range(num_stages)]
-        folds = [1] + [fold*exp**i for i in range(num_stages)]
+        folds = [1] + folds #[fold*exp**i for i in range(num_stages)]
 
         self.stem = Stem(c_in, no=ni) # , deep_stem
         #self.init = InitBlock(Unit, ni, fold, nh=nh)
 
         units = []
-        idmappings = []
-        cur = 1
         for i, (nu, stride) in enumerate(zip(num_nodes, strides)):
             for j in range(nu):
                 if j == 0: # the first node(layer) of each stage
@@ -111,7 +111,7 @@ class ResNetX2(nn.Module):
         self.units = nn.ModuleList(units)
 
         self.classifier = Classifier(ni*folds[-1], c_out) #*fold
-        self.fold = fold
+        self.folds = folds
         self.num_nodes = num_nodes
         init_cnn(self)
 
