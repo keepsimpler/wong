@@ -37,6 +37,12 @@ summary: "a folded ResNet"
 </div>
 
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="ResNet4">ResNet4<a class="anchor-link" href="#ResNet4">&#182;</a></h1>
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 
 </div>
@@ -49,7 +55,45 @@ summary: "a folded ResNet"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="InitBlock" class="doc_header"><code>class</code> <code>InitBlock</code><a href="https://github.com/keepsimpler/wong/tree/master/wong/resnetx2.py#L12" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>InitBlock</code>(<strong><code>Unit</code></strong>:<code>Module</code>, <strong><code>ni</code></strong>:<code>int</code>, <strong><code>fold</code></strong>:<code>int</code>, <strong><code>stride</code></strong>:<code>int</code>=<em><code>1</code></em>, <strong>**<code>kwargs</code></strong>) :: <code>Module</code></p>
+<h2 id="Init4" class="doc_header"><code>class</code> <code>Init4</code><a href="https://github.com/keepsimpler/wong/tree/master/wong/resnetx2.py#L12" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>Init4</code>(<strong><code>Unit</code></strong>:<code>Module</code>, <strong><code>ni</code></strong>:<code>int</code>, <strong><code>fold</code></strong>:<code>int</code>, <strong>**<code>kwargs</code></strong>) :: <code>Module</code></p>
+</blockquote>
+<p>Init block of folded ResNet</p>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Aggregate to enough units for folded net:</p>
+<ol>
+<li>Unit : unit operator</li>
+<li>ni : number of input channels for <code>Unit</code></li>
+<li>fold : folding length</li>
+<li>stride : across stage or not</li>
+<li>**kwargs : arguments to <code>Unit</code></li>
+</ol>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<h2 id="InitBlock" class="doc_header"><code>class</code> <code>InitBlock</code><a href="https://github.com/keepsimpler/wong/tree/master/wong/resnetx2.py#L27" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>InitBlock</code>(<strong><code>Unit</code></strong>:<code>Module</code>, <strong><code>ni</code></strong>:<code>int</code>, <strong><code>fold</code></strong>:<code>int</code>, <strong><code>stride</code></strong>:<code>int</code>=<em><code>1</code></em>, <strong>**<code>kwargs</code></strong>) :: <code>Module</code></p>
 </blockquote>
 <p>Init block of folded ResNet</p>
 
@@ -105,7 +149,7 @@ summary: "a folded ResNet"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="FoldBlock" class="doc_header"><code>class</code> <code>FoldBlock</code><a href="https://github.com/keepsimpler/wong/tree/master/wong/resnetx2.py#L30" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>FoldBlock</code>(<strong><code>Unit</code></strong>:<code>Module</code>, <strong><code>ni</code></strong>:<code>int</code>, <strong><code>fold</code></strong>:<code>int</code>, <strong><code>stride</code></strong>:<code>int</code>=<em><code>1</code></em>, <strong>**<code>kwargs</code></strong>) :: <code>Module</code></p>
+<h2 id="FoldBlock" class="doc_header"><code>class</code> <code>FoldBlock</code><a href="https://github.com/keepsimpler/wong/tree/master/wong/resnetx2.py#L45" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>FoldBlock</code>(<strong><code>Unit</code></strong>:<code>Module</code>, <strong><code>ni</code></strong>:<code>int</code>, <strong><code>fold</code></strong>:<code>int</code>, <strong><code>stride</code></strong>:<code>int</code>=<em><code>1</code></em>, <strong>**<code>kwargs</code></strong>) :: <code>Module</code></p>
 </blockquote>
 <p>Basic block of folded ResNet</p>
 
@@ -188,7 +232,7 @@ summary: "a folded ResNet"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="ResNetX2" class="doc_header"><code>class</code> <code>ResNetX2</code><a href="https://github.com/keepsimpler/wong/tree/master/wong/resnetx2.py#L57" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>ResNetX2</code>(<strong><code>Stem</code></strong>, <strong><code>Unit</code></strong>, <strong><code>fold</code></strong>:<code>int</code>, <strong><code>ni</code></strong>:<code>int</code>, <strong><code>num_nodes</code></strong>:<code>tuple</code>, <strong><code>bottle_scale</code></strong>:<code>int</code>=<em><code>1</code></em>, <strong><code>first_downsample</code></strong>:<code>bool</code>=<em><code>False</code></em>, <strong><code>c_in</code></strong>:<code>int</code>=<em><code>3</code></em>, <strong><code>c_out</code></strong>:<code>int</code>=<em><code>10</code></em>, <strong>**<code>kwargs</code></strong>) :: <code>Module</code></p>
+<h2 id="ResNetX2" class="doc_header"><code>class</code> <code>ResNetX2</code><a href="https://github.com/keepsimpler/wong/tree/master/wong/resnetx2.py#L72" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>ResNetX2</code>(<strong><code>Stem</code></strong>, <strong><code>Unit</code></strong>, <strong><code>fold</code></strong>:<code>int</code>, <strong><code>ni</code></strong>:<code>int</code>, <strong><code>num_nodes</code></strong>:<code>tuple</code>, <strong><code>bottle_scale</code></strong>:<code>int</code>=<em><code>1</code></em>, <strong><code>first_downsample</code></strong>:<code>bool</code>=<em><code>False</code></em>, <strong><code>c_in</code></strong>:<code>int</code>=<em><code>3</code></em>, <strong><code>c_out</code></strong>:<code>int</code>=<em><code>10</code></em>, <strong>**<code>kwargs</code></strong>) :: <code>Module</code></p>
 </blockquote>
 <p>A folded resnet.</p>
 

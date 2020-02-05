@@ -99,7 +99,7 @@ class ResNetX(nn.Module):
             if diff == 0:
                 results[cur % (2*self.fold-1)] = unit(results[(cur-1) % (2*self.fold-1)]) + idmapping(results[pred % (2*self.fold-1)])
             else:
-                results[cur % (2*self.fold-1)] = unit(results[(cur-1) % (2*self.fold-1)])
+                results[cur % (2*self.fold-1)] = unit(results[(cur-1) % (2*self.fold-1)]) + idmapping(results[(cur-1) % (2*self.fold-1)])
         x = results[cur % (2*self.fold-1)]
 
         x = self.classifier(x)
