@@ -93,7 +93,7 @@ class ResNetX2(nn.Module):
                  c_in:int=3, c_out:int=10, **kwargs):
         super(ResNetX2, self).__init__()
         num_stages = len(num_nodes)
-        nh = ni * bottle_scale
+        nh = int(ni * bottle_scale)
         strides = [1 if i==0 and not first_downsample else 2 for i in range(num_stages)]
         folds = [1] + folds #[fold*exp**i for i in range(num_stages)]
 
