@@ -45,6 +45,7 @@ index = {"ShuffleBlock": "00_core.ipynb",
          "Init4": "07_resnetx2.ipynb",
          "InitBlock": "07_resnetx2.ipynb",
          "FoldBlock": "07_resnetx2.ipynb",
+         "ExpandBlock": "07_resnetx2.ipynb",
          "ResNetX2": "07_resnetx2.ipynb"}
 
 modules = ["core.py",
