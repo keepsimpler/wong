@@ -32,11 +32,15 @@ def layer_diff(cur:int, pred:int, num_nodes:tuple):
     for i, num in enumerate(num_nodes):
         if cumsum <= cur < cumsum + num:
             cur_layer = i
+            if cur == cumsum:
+                first = True
+            else:
+                first = False
         if cumsum <= pred < cumsum + num:
             pred_layer = i
         cumsum += num
     diff = cur_layer - pred_layer
-    return diff
+    return diff, first
 
 #Cell
 class ResNetX(nn.Module):
@@ -68,14 +72,17 @@ class ResNetX(nn.Module):
                     units += [Unit(no, no, nh, stride=1, **kwargs)]
 
                 pred = get_pred(cur, fold, start_id, end_id) #
-                diff = layer_diff(cur, pred, num_nodes)
+                diff, first = layer_diff(cur, pred, num_nodes)
                 assert diff == 0 or diff == 1 or (diff == 2 and pred == 0), \
                        'cur={}, pred={}, diff={} is not allowed.'.format(cur, pred, diff)
 #                 print('fold = {} , cur = {} , pred = {} ,diff = {}'.format(fold, cur, pred, diff))
                 if diff == 0:
                     idmappings += [Conn(no, no, stride=1)]
                 elif diff == 1:
-                    idmappings += [Conn(ni, no, stride=stride)]
+                    if first:
+                        idmappings += [Conn(ni, no, stride=stride)]
+                    else:
+                        idmappings += [Conn(no, no, stride=1)]
                 elif diff == 2:
                     idmappings += [Conn(origin_ni, no, stride=stride)]
                 cur += 1
