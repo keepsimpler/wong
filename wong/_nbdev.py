@@ -42,8 +42,6 @@ index = {"ShuffleBlock": "00_core.ipynb",
          "resnet_local_to_pretrained": "04_resnetx.ipynb",
          "resnetx": "04_resnetx.ipynb",
          "get_num_nodes": "05_automl.ipynb",
-         "Init4": "07_resnetx2.ipynb",
-         "InitBlock": "07_resnetx2.ipynb",
          "FoldBlock": "07_resnetx2.ipynb",
          "ExpandBlock": "07_resnetx2.ipynb",
          "ResNetX2": "07_resnetx2.ipynb"}

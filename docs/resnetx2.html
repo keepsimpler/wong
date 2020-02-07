@@ -39,36 +39,6 @@ summary: "a folded ResNet"
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="ResNet4">ResNet4<a class="anchor-link" href="#ResNet4">&#182;</a></h1>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-
-<div class="output_markdown rendered_html output_subarea ">
-<h2 id="Init4" class="doc_header"><code>class</code> <code>Init4</code><a href="https://github.com/keepsimpler/wong/tree/master/wong/resnetx2.py#L12" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>Init4</code>(<strong><code>Unit</code></strong>:<code>Module</code>, <strong><code>ni</code></strong>:<code>int</code>, <strong><code>fold</code></strong>:<code>int</code>, <strong>**<code>kwargs</code></strong>) :: <code>Module</code></p>
-</blockquote>
-<p>Init block of folded ResNet</p>
-
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
 <p>Aggregate to enough units for folded net:</p>
 <ol>
 <li>Unit : unit operator</li>
@@ -93,63 +63,7 @@ summary: "a folded ResNet"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="InitBlock" class="doc_header"><code>class</code> <code>InitBlock</code><a href="https://github.com/keepsimpler/wong/tree/master/wong/resnetx2.py#L27" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>InitBlock</code>(<strong><code>Unit</code></strong>:<code>Module</code>, <strong><code>ni</code></strong>:<code>int</code>, <strong><code>fold</code></strong>:<code>int</code>, <strong><code>stride</code></strong>:<code>int</code>=<em><code>1</code></em>, <strong>**<code>kwargs</code></strong>) :: <code>Module</code></p>
-</blockquote>
-<p>Init block of folded ResNet</p>
-
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">InitBlock</span><span class="p">(</span><span class="n">mbconv</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">stride</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">nh</span><span class="o">=</span><span class="mi">32</span><span class="p">)</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">16</span><span class="p">,</span><span class="mi">32</span><span class="p">,</span><span class="mi">32</span><span class="p">)</span>
-<span class="n">xs</span> <span class="o">=</span> <span class="n">m</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-<span class="nb">len</span><span class="p">(</span><span class="n">xs</span><span class="p">),</span> <span class="n">xs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>(4, torch.Size([2, 16, 32, 32]))</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-
-<div class="output_markdown rendered_html output_subarea ">
-<h2 id="FoldBlock" class="doc_header"><code>class</code> <code>FoldBlock</code><a href="https://github.com/keepsimpler/wong/tree/master/wong/resnetx2.py#L45" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>FoldBlock</code>(<strong><code>Unit</code></strong>:<code>Module</code>, <strong><code>ni</code></strong>:<code>int</code>, <strong><code>fold</code></strong>:<code>int</code>, <strong><code>stride</code></strong>:<code>int</code>=<em><code>1</code></em>, <strong>**<code>kwargs</code></strong>) :: <code>Module</code></p>
+<h2 id="FoldBlock" class="doc_header"><code>class</code> <code>FoldBlock</code><a href="https://github.com/keepsimpler/wong/tree/master/wong/resnetx2.py#L12" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>FoldBlock</code>(<strong><code>Unit</code></strong>:<code>Module</code>, <strong><code>ni</code></strong>:<code>int</code>, <strong><code>fold</code></strong>:<code>int</code>, <strong><code>stride</code></strong>:<code>int</code>=<em><code>1</code></em>, <strong>**<code>kwargs</code></strong>) :: <code>Module</code></p>
 </blockquote>
 <p>Basic block of folded ResNet</p>
 
@@ -179,6 +93,19 @@ summary: "a folded ResNet"
 
 <div class="inner_cell">
     <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">xs</span> <span class="o">=</span> <span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">16</span><span class="p">,</span><span class="mi">32</span><span class="p">,</span><span class="mi">32</span><span class="p">)]</span> <span class="o">*</span> <span class="mi">4</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">xs2</span> <span class="o">=</span> <span class="n">m</span><span class="p">(</span><span class="o">*</span><span class="n">xs</span><span class="p">)</span>
 </pre></div>
 
@@ -192,7 +119,7 @@ summary: "a folded ResNet"
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">xs2</span><span class="p">),</span><span class="n">xs2</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span><span class="n">xs2</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span><span class="n">xs2</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span><span class="n">xs2</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">xs2</span><span class="p">),</span> <span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">xs2</span><span class="p">]</span>
 </pre></div>
 
     </div>
@@ -208,10 +135,10 @@ summary: "a folded ResNet"
 
 <div class="output_text output_subarea output_execute_result">
 <pre>(4,
- torch.Size([2, 16, 32, 32]),
- torch.Size([2, 16, 32, 32]),
- torch.Size([2, 16, 32, 32]),
- torch.Size([2, 16, 32, 32]))</pre>
+ [torch.Size([2, 16, 32, 32]),
+  torch.Size([2, 16, 32, 32]),
+  torch.Size([2, 16, 32, 32]),
+  torch.Size([2, 16, 32, 32])])</pre>
 </div>
 
 </div>
@@ -232,7 +159,7 @@ summary: "a folded ResNet"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="ExpandBlock" class="doc_header"><code>class</code> <code>ExpandBlock</code><a href="https://github.com/keepsimpler/wong/tree/master/wong/resnetx2.py#L63" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>ExpandBlock</code>(<strong><code>Unit</code></strong>:<code>Module</code>, <strong><code>ni</code></strong>:<code>int</code>, <strong><code>fold1</code></strong>:<code>int</code>, <strong><code>fold2</code></strong>:<code>int</code>, <strong><code>stride</code></strong>:<code>int</code>=<em><code>1</code></em>, <strong>**<code>kwargs</code></strong>) :: <code>Module</code></p>
+<h2 id="ExpandBlock" class="doc_header"><code>class</code> <code>ExpandBlock</code><a href="https://github.com/keepsimpler/wong/tree/master/wong/resnetx2.py#L30" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>ExpandBlock</code>(<strong><code>Unit</code></strong>:<code>Module</code>, <strong><code>ni</code></strong>:<code>int</code>, <strong><code>fold1</code></strong>:<code>int</code>, <strong><code>fold2</code></strong>:<code>int</code>, <strong><code>stride</code></strong>:<code>int</code>=<em><code>1</code></em>, <strong>**<code>kwargs</code></strong>) :: <code>Module</code></p>
 </blockquote>
 <p>Expand block of folded ResNet</p>
 
@@ -275,7 +202,7 @@ summary: "a folded ResNet"
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">xs2</span><span class="p">),</span><span class="n">xs2</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span><span class="n">xs2</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span><span class="n">xs2</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="c1">#,xs2[3].shape</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">xs2</span><span class="p">),</span> <span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">xs2</span><span class="p">]</span>
 </pre></div>
 
     </div>
@@ -291,9 +218,9 @@ summary: "a folded ResNet"
 
 <div class="output_text output_subarea output_execute_result">
 <pre>(3,
- torch.Size([2, 16, 16, 16]),
- torch.Size([2, 16, 16, 16]),
- torch.Size([2, 16, 16, 16]))</pre>
+ [torch.Size([2, 16, 16, 16]),
+  torch.Size([2, 16, 16, 16]),
+  torch.Size([2, 16, 16, 16])])</pre>
 </div>
 
 </div>
@@ -314,7 +241,7 @@ summary: "a folded ResNet"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="ResNetX2" class="doc_header"><code>class</code> <code>ResNetX2</code><a href="https://github.com/keepsimpler/wong/tree/master/wong/resnetx2.py#L89" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>ResNetX2</code>(<strong><code>Stem</code></strong>, <strong><code>Unit</code></strong>, <strong><code>folds</code></strong>:<code>tuple</code>, <strong><code>ni</code></strong>:<code>int</code>, <strong><code>num_nodes</code></strong>:<code>tuple</code>, <strong><code>bottle_scale</code></strong>:<code>int</code>=<em><code>1</code></em>, <strong><code>first_downsample</code></strong>:<code>bool</code>=<em><code>False</code></em>, <strong><code>c_in</code></strong>:<code>int</code>=<em><code>3</code></em>, <strong><code>c_out</code></strong>:<code>int</code>=<em><code>10</code></em>, <strong>**<code>kwargs</code></strong>) :: <code>Module</code></p>
+<h2 id="ResNetX2" class="doc_header"><code>class</code> <code>ResNetX2</code><a href="https://github.com/keepsimpler/wong/tree/master/wong/resnetx2.py#L56" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>ResNetX2</code>(<strong><code>Stem</code></strong>, <strong><code>Unit</code></strong>, <strong><code>folds</code></strong>:<code>tuple</code>, <strong><code>ni</code></strong>:<code>int</code>, <strong><code>num_nodes</code></strong>:<code>tuple</code>, <strong><code>bottle_scale</code></strong>:<code>int</code>=<em><code>1</code></em>, <strong><code>first_downsample</code></strong>:<code>bool</code>=<em><code>False</code></em>, <strong><code>tail_all</code></strong>:<code>bool</code>=<em><code>True</code></em>, <strong><code>c_in</code></strong>:<code>int</code>=<em><code>3</code></em>, <strong><code>c_out</code></strong>:<code>int</code>=<em><code>10</code></em>, <strong>**<code>kwargs</code></strong>) :: <code>Module</code></p>
 </blockquote>
 <p>A folded resnet.</p>
 
@@ -331,9 +258,9 @@ summary: "a folded ResNet"
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">num_nodes</span> <span class="o">=</span> <span class="p">[</span><span class="mi">8</span><span class="p">]</span><span class="o">*</span><span class="mi">4</span>
-<span class="n">folds</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">4</span><span class="p">]</span>
-<span class="n">model</span> <span class="o">=</span> <span class="n">ResNetX2</span><span class="p">(</span><span class="n">Stem</span><span class="o">=</span><span class="n">conv_bn</span><span class="p">,</span> <span class="n">Unit</span><span class="o">=</span><span class="n">mbconv</span><span class="p">,</span> <span class="n">folds</span><span class="o">=</span><span class="n">folds</span><span class="p">,</span> <span class="n">ni</span><span class="o">=</span><span class="mi">64</span><span class="p">,</span> <span class="n">num_nodes</span><span class="o">=</span><span class="n">num_nodes</span><span class="p">,</span> <span class="n">bottle_scale</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">num_nodes</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
+<span class="n">folds</span> <span class="o">=</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">]</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">ResNetX2</span><span class="p">(</span><span class="n">Stem</span><span class="o">=</span><span class="n">conv_bn</span><span class="p">,</span> <span class="n">Unit</span><span class="o">=</span><span class="n">mbconv</span><span class="p">,</span> <span class="n">folds</span><span class="o">=</span><span class="n">folds</span><span class="p">,</span> <span class="n">ni</span><span class="o">=</span><span class="mi">64</span><span class="p">,</span> <span class="n">num_nodes</span><span class="o">=</span><span class="n">num_nodes</span><span class="p">,</span> <span class="n">bottle_scale</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">tail_all</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">ks</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">c_out</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
 <span class="n">num_params</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
 </pre></div>
 
@@ -349,1067 +276,7 @@ summary: "a folded ResNet"
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>tensor(417386)</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">model</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>ResNetX2(
-  (stem): Sequential(
-    (0): Conv2d(3, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
-    (1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-  )
-  (units): ModuleList(
-    (0): ExpandBlock(
-      (units): ModuleList(
-        (0): Sequential(
-          (0): Conv2d(64, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (2): ReLU(inplace=True)
-          (3): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=32, bias=False)
-          (4): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (5): ReLU(inplace=True)
-          (6): Conv2d(32, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (7): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-        )
-      )
-    )
-    (1): FoldBlock(
-      (units): ModuleList(
-        (0): Sequential(
-          (0): Conv2d(64, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (2): ReLU(inplace=True)
-          (3): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=32, bias=False)
-          (4): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (5): ReLU(inplace=True)
-          (6): Conv2d(32, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (7): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-        )
-      )
-    )
-    (2): FoldBlock(
-      (units): ModuleList(
-        (0): Sequential(
-          (0): Conv2d(64, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (2): ReLU(inplace=True)
-          (3): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=32, bias=False)
-          (4): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (5): ReLU(inplace=True)
-          (6): Conv2d(32, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (7): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-        )
-      )
-    )
-    (3): FoldBlock(
-      (units): ModuleList(
-        (0): Sequential(
-          (0): Conv2d(64, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (2): ReLU(inplace=True)
-          (3): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=32, bias=False)
-          (4): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (5): ReLU(inplace=True)
-          (6): Conv2d(32, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (7): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-        )
-      )
-    )
-    (4): FoldBlock(
-      (units): ModuleList(
-        (0): Sequential(
-          (0): Conv2d(64, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (2): ReLU(inplace=True)
-          (3): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=32, bias=False)
-          (4): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (5): ReLU(inplace=True)
-          (6): Conv2d(32, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (7): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-        )
-      )
-    )
-    (5): FoldBlock(
-      (units): ModuleList(
-        (0): Sequential(
-          (0): Conv2d(64, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (2): ReLU(inplace=True)
-          (3): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=32, bias=False)
-          (4): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (5): ReLU(inplace=True)
-          (6): Conv2d(32, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (7): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-        )
-      )
-    )
-    (6): FoldBlock(
-      (units): ModuleList(
-        (0): Sequential(
-          (0): Conv2d(64, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (2): ReLU(inplace=True)
-          (3): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=32, bias=False)
-          (4): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (5): ReLU(inplace=True)
-          (6): Conv2d(32, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (7): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-        )
-      )
-    )
-    (7): FoldBlock(
-      (units): ModuleList(
-        (0): Sequential(
-          (0): Conv2d(64, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (2): ReLU(inplace=True)
-          (3): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=32, bias=False)
-          (4): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (5): ReLU(inplace=True)
-          (6): Conv2d(32, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (7): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-        )
-      )
-    )
-    (8): ExpandBlock(
-      (units): ModuleList(
-        (0): Sequential(
-          (0): Conv2d(64, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (2): ReLU(inplace=True)
-          (3): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=32, bias=False)
-          (4): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (5): ReLU(inplace=True)
-          (6): Conv2d(32, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (7): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-        )
-        (1): Sequential(
-          (0): Conv2d(64, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (2): ReLU(inplace=True)
-          (3): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=32, bias=False)
-          (4): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (5): ReLU(inplace=True)
-          (6): Conv2d(32, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (7): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-        )
-      )
-      (pool): MaxPool2d(kernel_size=3, stride=2, padding=1, dilation=1, ceil_mode=False)
-    )
-    (9): FoldBlock(
-      (units): ModuleList(
-        (0): Sequential(
-          (0): Conv2d(64, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (2): ReLU(inplace=True)
-          (3): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=32, bias=False)
-          (4): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (5): ReLU(inplace=True)
-          (6): Conv2d(32, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (7): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-        )
-        (1): Sequential(
-          (0): Conv2d(64, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (2): ReLU(inplace=True)
-          (3): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=32, bias=False)
-          (4): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (5): ReLU(inplace=True)
-          (6): Conv2d(32, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (7): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-        )
-        (2): Sequential(
-          (0): Conv2d(64, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (2): ReLU(inplace=True)
-          (3): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=32, bias=False)
-          (4): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (5): ReLU(inplace=True)
-          (6): Conv2d(32, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (7): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-        )
-      )
-    )
-    (10): FoldBlock(
-      (units): ModuleList(
-        (0): Sequential(
-          (0): Conv2d(64, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (2): ReLU(inplace=True)
-          (3): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=32, bias=False)
-          (4): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (5): ReLU(inplace=True)
-          (6): Conv2d(32, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (7): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-        )
-        (1): Sequential(
-          (0): Conv2d(64, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (2): ReLU(inplace=True)
-          (3): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=32, bias=False)
-          (4): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (5): ReLU(inplace=True)
-          (6): Conv2d(32, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (7): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-        )
-        (2): Sequential(
-          (0): Conv2d(64, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (2): ReLU(inplace=True)
-          (3): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=32, bias=False)
-          (4): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (5): ReLU(inplace=True)
-          (6): Conv2d(32, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (7): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-        )
-      )
-    )
-    (11): FoldBlock(
-      (units): ModuleList(
-        (0): Sequential(
-          (0): Conv2d(64, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (2): ReLU(inplace=True)
-          (3): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=32, bias=False)
-          (4): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (5): ReLU(inplace=True)
-          (6): Conv2d(32, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (7): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-        )
-        (1): Sequential(
-          (0): Conv2d(64, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (2): ReLU(inplace=True)
-          (3): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=32, bias=False)
-          (4): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (5): ReLU(inplace=True)
-          (6): Conv2d(32, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (7): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-        )
-        (2): Sequential(
-          (0): Conv2d(64, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (2): ReLU(inplace=True)
-          (3): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=32, bias=False)
-          (4): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (5): ReLU(inplace=True)
-          (6): Conv2d(32, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (7): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-        )
-      )
-    )
-    (12): FoldBlock(
-      (units): ModuleList(
-        (0): Sequential(
-          (0): Conv2d(64, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (2): ReLU(inplace=True)
-          (3): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=32, bias=False)
-          (4): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (5): ReLU(inplace=True)
-          (6): Conv2d(32, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (7): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-        )
-        (1): Sequential(
-          (0): Conv2d(64, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (2): ReLU(inplace=True)
-          (3): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=32, bias=False)
-          (4): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (5): ReLU(inplace=True)
-          (6): Conv2d(32, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (7): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-        )
-        (2): Sequential(
-          (0): Conv2d(64, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (2): ReLU(inplace=True)
-          (3): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=32, bias=False)
-          (4): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (5): ReLU(inplace=True)
-          (6): Conv2d(32, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (7): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-        )
-      )
-    )
-    (13): FoldBlock(
-      (units): ModuleList(
-        (0): Sequential(
-          (0): Conv2d(64, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (2): ReLU(inplace=True)
-          (3): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=32, bias=False)
-          (4): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (5): ReLU(inplace=True)
-          (6): Conv2d(32, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (7): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-        )
-        (1): Sequential(
-          (0): Conv2d(64, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (2): ReLU(inplace=True)
-          (3): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=32, bias=False)
-          (4): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (5): ReLU(inplace=True)
-          (6): Conv2d(32, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (7): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-        )
-        (2): Sequential(
-          (0): Conv2d(64, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (2): ReLU(inplace=True)
-          (3): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=32, bias=False)
-          (4): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (5): ReLU(inplace=True)
-          (6): Conv2d(32, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (7): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-        )
-      )
-    )
-    (14): FoldBlock(
-      (units): ModuleList(
-        (0): Sequential(
-          (0): Conv2d(64, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (2): ReLU(inplace=True)
-          (3): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=32, bias=False)
-          (4): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (5): ReLU(inplace=True)
-          (6): Conv2d(32, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (7): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-        )
-        (1): Sequential(
-          (0): Conv2d(64, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (2): ReLU(inplace=True)
-          (3): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=32, bias=False)
-          (4): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (5): ReLU(inplace=True)
-          (6): Conv2d(32, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (7): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-        )
-        (2): Sequential(
-          (0): Conv2d(64, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (2): ReLU(inplace=True)
-          (3): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=32, bias=False)
-          (4): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (5): ReLU(inplace=True)
-          (6): Conv2d(32, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (7): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-        )
-      )
-    )
-    (15): FoldBlock(
-      (units): ModuleList(
-        (0): Sequential(
-          (0): Conv2d(64, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (2): ReLU(inplace=True)
-          (3): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=32, bias=False)
-          (4): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (5): ReLU(inplace=True)
-          (6): Conv2d(32, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (7): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-        )
-        (1): Sequential(
-          (0): Conv2d(64, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (2): ReLU(inplace=True)
-          (3): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=32, bias=False)
-          (4): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (5): ReLU(inplace=True)
-          (6): Conv2d(32, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (7): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-        )
-        (2): Sequential(
-          (0): Conv2d(64, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (2): ReLU(inplace=True)
-          (3): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=32, bias=False)
-          (4): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (5): ReLU(inplace=True)
-          (6): Conv2d(32, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (7): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-        )
-      )
-    )
-    (16): ExpandBlock(
-      (units): ModuleList(
-        (0): Sequential(
-          (0): Conv2d(64, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (2): ReLU(inplace=True)
-          (3): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=32, bias=False)
-          (4): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (5): ReLU(inplace=True)
-          (6): Conv2d(32, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (7): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-        )
-        (1): Sequential(
-          (0): Conv2d(64, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (2): ReLU(inplace=True)
-          (3): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=32, bias=False)
-          (4): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (5): ReLU(inplace=True)
-          (6): Conv2d(32, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (7): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-        )
-      )
-      (pool): MaxPool2d(kernel_size=3, stride=2, padding=1, dilation=1, ceil_mode=False)
-    )
-    (17): FoldBlock(
-      (units): ModuleList(
-        (0): Sequential(
-          (0): Conv2d(64, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (2): ReLU(inplace=True)
-          (3): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=32, bias=False)
-          (4): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (5): ReLU(inplace=True)
-          (6): Conv2d(32, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (7): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-        )
-        (1): Sequential(
-          (0): Conv2d(64, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (2): ReLU(inplace=True)
-          (3): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=32, bias=False)
-          (4): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (5): ReLU(inplace=True)
-          (6): Conv2d(32, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (7): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-        )
-        (2): Sequential(
-          (0): Conv2d(64, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (2): ReLU(inplace=True)
-          (3): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=32, bias=False)
-          (4): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (5): ReLU(inplace=True)
-          (6): Conv2d(32, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (7): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-        )
-        (3): Sequential(
-          (0): Conv2d(64, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (2): ReLU(inplace=True)
-          (3): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=32, bias=False)
-          (4): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (5): ReLU(inplace=True)
-          (6): Conv2d(32, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (7): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-        )
-        (4): Sequential(
-          (0): Conv2d(64, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (2): ReLU(inplace=True)
-          (3): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=32, bias=False)
-          (4): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (5): ReLU(inplace=True)
-          (6): Conv2d(32, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (7): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-        )
-      )
-    )
-    (18): FoldBlock(
-      (units): ModuleList(
-        (0): Sequential(
-          (0): Conv2d(64, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (2): ReLU(inplace=True)
-          (3): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=32, bias=False)
-          (4): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (5): ReLU(inplace=True)
-          (6): Conv2d(32, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (7): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-        )
-        (1): Sequential(
-          (0): Conv2d(64, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (2): ReLU(inplace=True)
-          (3): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=32, bias=False)
-          (4): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (5): ReLU(inplace=True)
-          (6): Conv2d(32, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (7): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-        )
-        (2): Sequential(
-          (0): Conv2d(64, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (2): ReLU(inplace=True)
-          (3): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=32, bias=False)
-          (4): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (5): ReLU(inplace=True)
-          (6): Conv2d(32, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (7): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-        )
-        (3): Sequential(
-          (0): Conv2d(64, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (2): ReLU(inplace=True)
-          (3): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=32, bias=False)
-          (4): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (5): ReLU(inplace=True)
-          (6): Conv2d(32, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (7): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-        )
-        (4): Sequential(
-          (0): Conv2d(64, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (2): ReLU(inplace=True)
-          (3): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=32, bias=False)
-          (4): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (5): ReLU(inplace=True)
-          (6): Conv2d(32, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (7): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-        )
-      )
-    )
-    (19): FoldBlock(
-      (units): ModuleList(
-        (0): Sequential(
-          (0): Conv2d(64, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (2): ReLU(inplace=True)
-          (3): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=32, bias=False)
-          (4): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (5): ReLU(inplace=True)
-          (6): Conv2d(32, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (7): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-        )
-        (1): Sequential(
-          (0): Conv2d(64, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (2): ReLU(inplace=True)
-          (3): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=32, bias=False)
-          (4): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (5): ReLU(inplace=True)
-          (6): Conv2d(32, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (7): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-        )
-        (2): Sequential(
-          (0): Conv2d(64, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (2): ReLU(inplace=True)
-          (3): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=32, bias=False)
-          (4): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (5): ReLU(inplace=True)
-          (6): Conv2d(32, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (7): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-        )
-        (3): Sequential(
-          (0): Conv2d(64, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (2): ReLU(inplace=True)
-          (3): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=32, bias=False)
-          (4): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (5): ReLU(inplace=True)
-          (6): Conv2d(32, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (7): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-        )
-        (4): Sequential(
-          (0): Conv2d(64, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (2): ReLU(inplace=True)
-          (3): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=32, bias=False)
-          (4): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (5): ReLU(inplace=True)
-          (6): Conv2d(32, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (7): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-        )
-      )
-    )
-    (20): FoldBlock(
-      (units): ModuleList(
-        (0): Sequential(
-          (0): Conv2d(64, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (2): ReLU(inplace=True)
-          (3): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=32, bias=False)
-          (4): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (5): ReLU(inplace=True)
-          (6): Conv2d(32, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (7): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-        )
-        (1): Sequential(
-          (0): Conv2d(64, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (2): ReLU(inplace=True)
-          (3): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=32, bias=False)
-          (4): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (5): ReLU(inplace=True)
-          (6): Conv2d(32, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (7): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-        )
-        (2): Sequential(
-          (0): Conv2d(64, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (2): ReLU(inplace=True)
-          (3): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=32, bias=False)
-          (4): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (5): ReLU(inplace=True)
-          (6): Conv2d(32, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (7): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-        )
-        (3): Sequential(
-          (0): Conv2d(64, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (2): ReLU(inplace=True)
-          (3): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=32, bias=False)
-          (4): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (5): ReLU(inplace=True)
-          (6): Conv2d(32, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (7): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-        )
-        (4): Sequential(
-          (0): Conv2d(64, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (2): ReLU(inplace=True)
-          (3): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=32, bias=False)
-          (4): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (5): ReLU(inplace=True)
-          (6): Conv2d(32, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (7): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-        )
-      )
-    )
-    (21): FoldBlock(
-      (units): ModuleList(
-        (0): Sequential(
-          (0): Conv2d(64, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (2): ReLU(inplace=True)
-          (3): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=32, bias=False)
-          (4): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (5): ReLU(inplace=True)
-          (6): Conv2d(32, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (7): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-        )
-        (1): Sequential(
-          (0): Conv2d(64, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (2): ReLU(inplace=True)
-          (3): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=32, bias=False)
-          (4): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (5): ReLU(inplace=True)
-          (6): Conv2d(32, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (7): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-        )
-        (2): Sequential(
-          (0): Conv2d(64, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (2): ReLU(inplace=True)
-          (3): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=32, bias=False)
-          (4): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (5): ReLU(inplace=True)
-          (6): Conv2d(32, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (7): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-        )
-        (3): Sequential(
-          (0): Conv2d(64, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (2): ReLU(inplace=True)
-          (3): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=32, bias=False)
-          (4): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (5): ReLU(inplace=True)
-          (6): Conv2d(32, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (7): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-        )
-        (4): Sequential(
-          (0): Conv2d(64, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (2): ReLU(inplace=True)
-          (3): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=32, bias=False)
-          (4): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (5): ReLU(inplace=True)
-          (6): Conv2d(32, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (7): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-        )
-      )
-    )
-    (22): FoldBlock(
-      (units): ModuleList(
-        (0): Sequential(
-          (0): Conv2d(64, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (2): ReLU(inplace=True)
-          (3): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=32, bias=False)
-          (4): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (5): ReLU(inplace=True)
-          (6): Conv2d(32, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (7): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-        )
-        (1): Sequential(
-          (0): Conv2d(64, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (2): ReLU(inplace=True)
-          (3): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=32, bias=False)
-          (4): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (5): ReLU(inplace=True)
-          (6): Conv2d(32, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (7): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-        )
-        (2): Sequential(
-          (0): Conv2d(64, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (2): ReLU(inplace=True)
-          (3): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=32, bias=False)
-          (4): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (5): ReLU(inplace=True)
-          (6): Conv2d(32, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (7): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-        )
-        (3): Sequential(
-          (0): Conv2d(64, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (2): ReLU(inplace=True)
-          (3): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=32, bias=False)
-          (4): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (5): ReLU(inplace=True)
-          (6): Conv2d(32, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (7): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-        )
-        (4): Sequential(
-          (0): Conv2d(64, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (2): ReLU(inplace=True)
-          (3): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=32, bias=False)
-          (4): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (5): ReLU(inplace=True)
-          (6): Conv2d(32, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (7): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-        )
-      )
-    )
-    (23): FoldBlock(
-      (units): ModuleList(
-        (0): Sequential(
-          (0): Conv2d(64, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (2): ReLU(inplace=True)
-          (3): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=32, bias=False)
-          (4): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (5): ReLU(inplace=True)
-          (6): Conv2d(32, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (7): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-        )
-        (1): Sequential(
-          (0): Conv2d(64, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (2): ReLU(inplace=True)
-          (3): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=32, bias=False)
-          (4): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (5): ReLU(inplace=True)
-          (6): Conv2d(32, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (7): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-        )
-        (2): Sequential(
-          (0): Conv2d(64, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (2): ReLU(inplace=True)
-          (3): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=32, bias=False)
-          (4): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (5): ReLU(inplace=True)
-          (6): Conv2d(32, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (7): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-        )
-        (3): Sequential(
-          (0): Conv2d(64, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (2): ReLU(inplace=True)
-          (3): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=32, bias=False)
-          (4): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (5): ReLU(inplace=True)
-          (6): Conv2d(32, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (7): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-        )
-        (4): Sequential(
-          (0): Conv2d(64, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (2): ReLU(inplace=True)
-          (3): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=32, bias=False)
-          (4): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (5): ReLU(inplace=True)
-          (6): Conv2d(32, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (7): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-        )
-      )
-    )
-    (24): ExpandBlock(
-      (units): ModuleList()
-      (pool): MaxPool2d(kernel_size=3, stride=2, padding=1, dilation=1, ceil_mode=False)
-    )
-    (25): FoldBlock(
-      (units): ModuleList(
-        (0): Sequential(
-          (0): Conv2d(64, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (2): ReLU(inplace=True)
-          (3): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=32, bias=False)
-          (4): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (5): ReLU(inplace=True)
-          (6): Conv2d(32, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (7): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-        )
-        (1): Sequential(
-          (0): Conv2d(64, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (2): ReLU(inplace=True)
-          (3): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=32, bias=False)
-          (4): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (5): ReLU(inplace=True)
-          (6): Conv2d(32, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (7): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-        )
-        (2): Sequential(
-          (0): Conv2d(64, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (2): ReLU(inplace=True)
-          (3): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=32, bias=False)
-          (4): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (5): ReLU(inplace=True)
-          (6): Conv2d(32, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (7): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-        )
-      )
-    )
-    (26): FoldBlock(
-      (units): ModuleList(
-        (0): Sequential(
-          (0): Conv2d(64, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (2): ReLU(inplace=True)
-          (3): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=32, bias=False)
-          (4): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (5): ReLU(inplace=True)
-          (6): Conv2d(32, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (7): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-        )
-        (1): Sequential(
-          (0): Conv2d(64, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (2): ReLU(inplace=True)
-          (3): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=32, bias=False)
-          (4): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (5): ReLU(inplace=True)
-          (6): Conv2d(32, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (7): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-        )
-        (2): Sequential(
-          (0): Conv2d(64, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (2): ReLU(inplace=True)
-          (3): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=32, bias=False)
-          (4): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (5): ReLU(inplace=True)
-          (6): Conv2d(32, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (7): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-        )
-      )
-    )
-    (27): FoldBlock(
-      (units): ModuleList(
-        (0): Sequential(
-          (0): Conv2d(64, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (2): ReLU(inplace=True)
-          (3): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=32, bias=False)
-          (4): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (5): ReLU(inplace=True)
-          (6): Conv2d(32, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (7): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-        )
-        (1): Sequential(
-          (0): Conv2d(64, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (2): ReLU(inplace=True)
-          (3): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=32, bias=False)
-          (4): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (5): ReLU(inplace=True)
-          (6): Conv2d(32, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (7): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-        )
-        (2): Sequential(
-          (0): Conv2d(64, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (2): ReLU(inplace=True)
-          (3): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=32, bias=False)
-          (4): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (5): ReLU(inplace=True)
-          (6): Conv2d(32, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (7): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-        )
-      )
-    )
-    (28): FoldBlock(
-      (units): ModuleList(
-        (0): Sequential(
-          (0): Conv2d(64, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (2): ReLU(inplace=True)
-          (3): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=32, bias=False)
-          (4): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (5): ReLU(inplace=True)
-          (6): Conv2d(32, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (7): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-        )
-        (1): Sequential(
-          (0): Conv2d(64, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (2): ReLU(inplace=True)
-          (3): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=32, bias=False)
-          (4): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (5): ReLU(inplace=True)
-          (6): Conv2d(32, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (7): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-        )
-        (2): Sequential(
-          (0): Conv2d(64, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (2): ReLU(inplace=True)
-          (3): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=32, bias=False)
-          (4): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (5): ReLU(inplace=True)
-          (6): Conv2d(32, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (7): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-        )
-      )
-    )
-    (29): FoldBlock(
-      (units): ModuleList(
-        (0): Sequential(
-          (0): Conv2d(64, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (2): ReLU(inplace=True)
-          (3): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=32, bias=False)
-          (4): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (5): ReLU(inplace=True)
-          (6): Conv2d(32, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (7): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-        )
-        (1): Sequential(
-          (0): Conv2d(64, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (2): ReLU(inplace=True)
-          (3): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=32, bias=False)
-          (4): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (5): ReLU(inplace=True)
-          (6): Conv2d(32, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (7): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-        )
-        (2): Sequential(
-          (0): Conv2d(64, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (2): ReLU(inplace=True)
-          (3): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=32, bias=False)
-          (4): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (5): ReLU(inplace=True)
-          (6): Conv2d(32, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (7): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-        )
-      )
-    )
-    (30): FoldBlock(
-      (units): ModuleList(
-        (0): Sequential(
-          (0): Conv2d(64, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (2): ReLU(inplace=True)
-          (3): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=32, bias=False)
-          (4): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (5): ReLU(inplace=True)
-          (6): Conv2d(32, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (7): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-        )
-        (1): Sequential(
-          (0): Conv2d(64, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (2): ReLU(inplace=True)
-          (3): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=32, bias=False)
-          (4): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (5): ReLU(inplace=True)
-          (6): Conv2d(32, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (7): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-        )
-        (2): Sequential(
-          (0): Conv2d(64, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (2): ReLU(inplace=True)
-          (3): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=32, bias=False)
-          (4): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (5): ReLU(inplace=True)
-          (6): Conv2d(32, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (7): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-        )
-      )
-    )
-    (31): FoldBlock(
-      (units): ModuleList(
-        (0): Sequential(
-          (0): Conv2d(64, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (2): ReLU(inplace=True)
-          (3): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=32, bias=False)
-          (4): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (5): ReLU(inplace=True)
-          (6): Conv2d(32, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (7): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-        )
-        (1): Sequential(
-          (0): Conv2d(64, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (2): ReLU(inplace=True)
-          (3): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=32, bias=False)
-          (4): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (5): ReLU(inplace=True)
-          (6): Conv2d(32, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (7): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-        )
-        (2): Sequential(
-          (0): Conv2d(64, 32, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (2): ReLU(inplace=True)
-          (3): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=32, bias=False)
-          (4): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-          (5): ReLU(inplace=True)
-          (6): Conv2d(32, 64, kernel_size=(1, 1), stride=(1, 1), bias=False)
-          (7): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
-        )
-      )
-    )
-  )
-  (classifier): Classifier(
-    (adaptivepool): AdaptiveAvgPool2d(output_size=(1, 1))
-    (fc): Linear(in_features=256, out_features=10, bias=True)
-  )
-)</pre>
+<pre>tensor(228004)</pre>
 </div>
 
 </div>
@@ -1442,6 +309,72 @@ summary: "a folded ResNet"
 </pre></div>
 
     </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Misc">Misc<a class="anchor-link" href="#Misc">&#182;</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">class</span> <span class="nc">InitBlock</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="s2">&quot;Init block of folded ResNet&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">Unit</span><span class="p">:</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">,</span> <span class="n">ni</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span> <span class="n">fold</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span> <span class="n">stride</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">InitBlock</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ni</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">fold</span> <span class="o">=</span> <span class="n">ni</span><span class="p">,</span> <span class="n">fold</span>
+        <span class="n">units</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">fold</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+            <span class="n">units</span> <span class="o">+=</span> <span class="p">[</span><span class="n">Unit</span><span class="p">(</span><span class="n">ni</span><span class="p">,</span> <span class="n">stride</span><span class="o">=</span><span class="n">stride</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">units</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">ModuleList</span><span class="p">(</span><span class="n">units</span><span class="p">)</span>
+        
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="n">xs</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fold</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+            <span class="n">xs</span> <span class="o">+=</span> <span class="p">[</span><span class="n">xs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">units</span><span class="p">[</span><span class="n">i</span><span class="p">](</span><span class="n">xs</span><span class="p">[</span><span class="n">i</span><span class="p">])]</span>
+        <span class="n">xs</span><span class="o">.</span><span class="n">reverse</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">xs</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">InitBlock</span><span class="p">(</span><span class="n">mbconv</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">stride</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">nh</span><span class="o">=</span><span class="mi">32</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">16</span><span class="p">,</span><span class="mi">32</span><span class="p">,</span><span class="mi">32</span><span class="p">)</span>
+<span class="n">xs</span> <span class="o">=</span> <span class="n">m</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="nb">len</span><span class="p">(</span><span class="n">xs</span><span class="p">),</span> <span class="n">xs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>(4, torch.Size([2, 16, 32, 32]))</pre>
+</div>
+
+</div>
+
 </div>
 </div>
 
