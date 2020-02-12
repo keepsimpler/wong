@@ -33,14 +33,23 @@ class TransitionBlock(nn.Module):
         super(TransitionBlock, self).__init__()
         self.ni, self.no, self.fold, self.stride = ni, no, fold, stride
         units = []
-        for i in range(fold):
-            units += [Unit(ni, no=no, stride=stride, **kwargs)]
+        idmappings = []
+        for i in range(fold-1):
+            if i==0:
+                units += [Unit(ni, no=no, stride=stride, **kwargs)]
+            else:
+                units += [Unit(ni=no, no=no, stride=1, **kwargs)]
+            idmappings += [IdentityMappingMaxPool(ni, no=no, stride=stride)]
         self.units = nn.ModuleList(units)
+        self.idmappings = nn.ModuleList(idmappings)
+        self.idmapping0 = IdentityMappingMaxPool(ni, no=no, stride=stride)
 
     def forward(self, *xs):
         xs = list(xs)
-        for i in range(len(xs)):
-            xs[i] = self.units[i](xs[i])
+        for i in range(self.fold-1):
+            xs[i+1] = self.idmappings[i](xs[i+1]) + self.units[i](xs[i])
+        xs[0] = self.idmapping0(xs[0])
+        xs.reverse()
         return xs
 
 #Cell
