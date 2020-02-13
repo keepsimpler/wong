@@ -3,7 +3,7 @@
 __all__ = ['ShuffleBlock', 'OprtType', 'conv_unit', 'conv', 'relu_conv_bn', 'conv_bn_relu', 'bn_relu_conv', 'relu_conv',
            'conv_bn', 'relu_conv_bn_shuffle', 'pack_relu_conv_bn', 'pack_bn_relu_conv', 'pack_relu_conv_bn_shuffle',
            'resnet_basicblock', 'resnet_bottleneck', 'preresnet_basicblock', 'preresnet_bottleneck', 'xception',
-           'mbconv', 'resnet_stem', 'resnet_stem_deep', 'IdentityMappingMaxPool', 'IdentityMappingAvgPool',
+           'mbconv2', 'mbconv', 'resnet_stem', 'resnet_stem_deep', 'IdentityMappingMaxPool', 'IdentityMappingAvgPool',
            'IdentityMappingConv', 'IdentityMapping', 'Classifier', 'ClassifierBNReLU', 'init_cnn', 'num_params']
 
 #Cell
@@ -144,6 +144,15 @@ def xception(ni:int, no:int, nh:int, ks:int=3, stride:int=1, zero_bn:bool=False)
     return nn.Sequential(*relu_conv(ni, no=nh, ks=ks, stride=stride, groups=ni),
                          *conv_bn(nh, no=no, ks=1, zero_bn=zero_bn)
                         )
+
+#Cell
+def mbconv2(ni:int, no:int=None, nh:int=None, ks:int=3, stride:int=1, groups:int=None, zero_bn:bool=False):
+    "Mobile Inverted Bottleneck block in MobileNetV2"
+    if no is None: no = ni
+    if nh is None: nh = ni
+    if groups is None: groups = nh
+    return nn.Sequential(*conv_bn_relu(ni, no=nh, ks=1, stride=1),
+                         *conv_bn_relu(nh, no=nh, ks=ks, stride=stride, groups=groups))
 
 #Cell
 def mbconv(ni:int, no:int=None, nh:int=None, ks:int=3, stride:int=1, groups:int=None, zero_bn:bool=False):
