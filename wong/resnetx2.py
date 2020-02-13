@@ -121,7 +121,7 @@ class ResNetX2(nn.Module):
                 if j == 0: # the first node(layer) of each stage
                     units += [ExpandBlock(Unit, ni, fold1 = folds[i], fold2=folds[i+1], stride=stride, nh=nh, **kwargs)]
                 else:
-                    units += [FoldBlock2(Unit, ni, fold=folds[i+1], stride=1, nh=nh, **kwargs)]
+                    units += [FoldBlock(Unit, ni, fold=folds[i+1], stride=1, nh=nh, **kwargs)]
 
         self.units = nn.ModuleList(units)
 
