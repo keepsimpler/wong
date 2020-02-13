@@ -18,7 +18,7 @@ class FoldBlock2(nn.Module):
         aggregates = []
         for i in range(fold-1):
             units += [Unit(ni, stride=1, **kwargs)]
-            aggregates += [conv_bn(ni, ks=1, zero_bn=True)]
+            aggregates += [conv_bn(ni, ks=1, zero_bn=False)]
         self.units = nn.ModuleList(units)
         self.aggregates = nn.ModuleList(aggregates)
 
