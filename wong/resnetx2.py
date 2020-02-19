@@ -40,12 +40,15 @@ class FoldBlock(nn.Module):
         super(FoldBlock, self).__init__()
         self.ni, self.fold, self.stride = ni, fold, stride
         units = []
-        for i in range(fold-1):
+        for i in range(max(1,fold-1)):
             units += [Unit(ni, stride=1, **kwargs)]
         self.units = nn.ModuleList(units)
 
     def forward(self, *xs):
         xs = list(xs)
+        if self.fold==1:
+            xs[0] = xs[0] + self.units[0](xs[0])
+            return xs
         for i in range(self.fold-1):
             xs[i+1] = xs[i+1] + self.units[i](xs[i])
         xs.reverse()
