@@ -25,7 +25,7 @@ entries:
       title: ResNetX
       url: /resnetx
     - output: web,pdf
-      title: Title
+      title: AutoML
       url: /automl
     - output: web,pdf
       title: Datasets
