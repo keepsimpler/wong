@@ -28,8 +28,8 @@ entries:
       title: Title
       url: /datasets
     - output: web,pdf
-      title: ResNetX2
-      url: /resnetx2
+      title: FoldNet
+      url: /foldnet
     output: web
     title: wong
   output: web

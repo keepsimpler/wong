@@ -43,14 +43,11 @@ index = {"ShuffleBlock": "00_core.ipynb",
          "resnet_local_to_pretrained": "04_resnetx.ipynb",
          "resnetx": "04_resnetx.ipynb",
          "get_num_nodes": "05_automl.ipynb",
-         "FoldBlock2": "07_resnetx2.ipynb",
-         "FoldBlock": "07_resnetx2.ipynb",
-         "TransitionBlock": "07_resnetx2.ipynb",
-         "ExpandBlock": "07_resnetx2.ipynb",
-         "ResNetX2": "07_resnetx2.ipynb",
-         "ResNetXTransition": "07_resnetx2.ipynb",
-         "num_units": "07_resnetx2.ipynb",
-         "cal_num_params": "07_resnetx2.ipynb"}
+         "FoldBlock": "07_foldnet.ipynb",
+         "ExpandBlock": "07_foldnet.ipynb",
+         "FoldNet": "07_foldnet.ipynb",
+         "num_units": "07_foldnet.ipynb",
+         "cal_num_params": "07_foldnet.ipynb"}
 
 modules = ["core.py",
            "config.py",
@@ -58,7 +55,7 @@ modules = ["core.py",
            "network.py",
            "resnetx.py",
            "automl.py",
-           "resnetx2.py"]
+           "foldnet.py"]
 
 git_url = "https://github.com/keepsimpler/wong/tree/master/"
 

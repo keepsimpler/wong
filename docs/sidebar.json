@@ -7,6 +7,6 @@
     "Network": "/network",
     "ResNetX": "/resnetx",
     "Title": "/datasets",
-    "ResNetX2": "/resnetx2"
+    "FoldNet": "/foldnet"
   }
 }
