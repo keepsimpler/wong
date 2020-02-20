@@ -6,7 +6,8 @@
     "Graph": "/graph",
     "Network": "/network",
     "ResNetX": "/resnetx",
-    "Title": "/datasets",
+    "Title": "/automl",
+    "Datasets": "/datasets",
     "FoldNet": "/foldnet"
   }
 }

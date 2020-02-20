@@ -13,32 +13,12 @@
 > This project try to apply the theory of complex networks to neural networks.The neural networks are considered as instances of networked systems.
 
 
-This file will become your README and also the index of your documentation.
-
 ## Install
 
-`pip install your_project_name`
+Wong can be installed with pip: `pip install git+https://github.com/keepsimpler/zero`. 
+Or clone this repo, cd to its directory, and `pip install -e .` .
 
-## How to use
+## Tutorial of FoldNet
 
-Fill me in please! Don't forget code examples:
-<div class="codecell" markdown="1">
-<div class="input_area" markdown="1">
-
-```
-1+1
-```
-
-</div>
-<div class="output_area" markdown="1">
-
-
-
-
-    2
-
-
-
-</div>
-
-</div>
+1. [Cifar10](cifar10.py)
+2. [Cifar100](cifar100.py)

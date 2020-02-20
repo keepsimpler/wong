@@ -26,6 +26,9 @@ entries:
       url: /resnetx
     - output: web,pdf
       title: Title
+      url: /automl
+    - output: web,pdf
+      title: Datasets
       url: /datasets
     - output: web,pdf
       title: FoldNet
