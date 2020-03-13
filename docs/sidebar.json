@@ -8,6 +8,7 @@
     "ResNetX": "/resnetx",
     "AutoML": "/automl",
     "Datasets": "/datasets",
-    "FoldNet": "/foldnet"
+    "FoldNet": "/foldnet",
+    "Title": "/lookbacknet"
   }
 }

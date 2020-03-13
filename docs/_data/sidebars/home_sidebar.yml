@@ -33,6 +33,9 @@ entries:
     - output: web,pdf
       title: FoldNet
       url: /foldnet
+    - output: web,pdf
+      title: Title
+      url: /lookbacknet
     output: web
     title: wong
   output: web

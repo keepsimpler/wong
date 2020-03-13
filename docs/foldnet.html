@@ -1,6 +1,7 @@
 ---
 
 title: FoldNet
+
 keywords: fastai
 sidebar: home_sidebar
 
@@ -17,7 +18,8 @@ summary: "a folded ResNet"
 -->
 
 <div class="container" id="notebook-container">
-    
+    {% raw %}
+        
 <div class="cell border-box-sizing code_cell rendered">
 
 </div>
@@ -52,6 +54,38 @@ summary: "a folded ResNet"
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># #export</span>
+<span class="c1"># class FoldBlock(nn.Module):</span>
+<span class="c1">#     &quot;Basic block of folded ResNet&quot;</span>
+<span class="c1">#     def __init__(self, Unit:nn.Module, ni:int, fold:int, stride:int=1, **kwargs):</span>
+<span class="c1">#         super(FoldBlock, self).__init__()</span>
+<span class="c1">#         self.ni, self.fold, self.stride = ni, fold, stride</span>
+<span class="c1">#         units = []</span>
+<span class="c1">#         for i in range(max(1,fold-1)):</span>
+<span class="c1">#             units += [Unit(ni, stride=1, **kwargs)]</span>
+<span class="c1">#         self.units = nn.ModuleList(units)</span>
+        
+<span class="c1">#     def forward(self, *xs):</span>
+<span class="c1">#         xs = list(xs)</span>
+<span class="c1">#         if self.fold==1:</span>
+<span class="c1">#             xs[0] = xs[0] + self.units[0](xs[0])</span>
+<span class="c1">#             return xs</span>
+<span class="c1">#         for i in range(self.fold-1):</span>
+<span class="c1">#             xs[i+1] = xs[i] + self.units[i](xs[i+1])</span>
+<span class="c1">#         xs.reverse()</span>
+<span class="c1">#         return xs</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
 
 </div>
 <div class="cell border-box-sizing code_cell rendered">
@@ -81,45 +115,12 @@ summary: "a folded ResNet"
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">FoldBlock</span><span class="p">(</span><span class="n">mbconv</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">nh</span><span class="o">=</span><span class="mi">32</span><span class="p">)</span>
-</pre></div>
 
-    </div>
-</div>
-</div>
+<span class="n">xs</span> <span class="o">=</span> <span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">16</span><span class="p">,</span><span class="mi">32</span><span class="p">,</span><span class="mi">32</span><span class="p">)]</span> <span class="o">*</span> <span class="mi">4</span>
 
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
+<span class="n">xs2</span> <span class="o">=</span> <span class="n">m</span><span class="p">(</span><span class="o">*</span><span class="n">xs</span><span class="p">)</span>
 
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">xs</span> <span class="o">=</span> <span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">16</span><span class="p">,</span><span class="mi">32</span><span class="p">,</span><span class="mi">32</span><span class="p">)]</span> <span class="o">*</span> <span class="mi">4</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">xs2</span> <span class="o">=</span> <span class="n">m</span><span class="p">(</span><span class="o">*</span><span class="n">xs</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">xs2</span><span class="p">),</span> <span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">xs2</span><span class="p">]</span>
+<span class="nb">len</span><span class="p">(</span><span class="n">xs2</span><span class="p">),</span> <span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">xs2</span><span class="p">]</span>
 </pre></div>
 
     </div>
@@ -313,21 +314,6 @@ summary: "a folded ResNet"
 </div>
 
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">autograd</span><span class="o">.</span><span class="n">set_detect_anomaly</span><span class="p">(</span><span class="kc">True</span><span class="p">):</span>
-    <span class="n">out</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-    <span class="n">out</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Calculate-number-of-params-in-FoldNet">Calculate number of params in FoldNet<a class="anchor-link" href="#Calculate-number-of-params-in-FoldNet">&#182;</a></h2>
@@ -360,7 +346,7 @@ summary: "a folded ResNet"
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Suppose the folding length of stage $i$ is $d_i$, then the number of units per FoldNet block is $d_i-1$.Suppose the number of blocks per stage is $b_i$, then the number of units of stage $i$ equal to $(d_i-1) * (b_i-1)$ for all the stages except the first stage, since a <a href="/foldnet.html#ExpandBlock"><code>ExpandBlock</code></a> with none unit start at each stage except the first stage.</p>
+<p>Suppose the folding length of stage $i$ is $d_i$, then the number of units per FoldNet block is $d_i-1$.Suppose the number of blocks per stage is $b_i$, then the number of units of stage $i$ equal to $(d_i-1) * (b_i-1)$ for all the stages except the first stage, since a <a href="/wong/lookbacknet#ExpandBlock"><code>ExpandBlock</code></a> with none unit start at each stage except the first stage.</p>
 <p>Suppose $n$ stages exist, then the number of all units in the backbone of FoldNet is:
 \begin{equation}
 (d_0-1) * b_0 + \sum_1^{n-1} (d_i-1) * (b_i-1)
@@ -429,6 +415,7 @@ summary: "a folded ResNet"
 </div>
 </div>
 </div>
+    {% endraw %}
 </div>
  
 
