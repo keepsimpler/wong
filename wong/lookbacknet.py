@@ -58,17 +58,17 @@ class LookbackNet(nn.Module):
         num_stages = len(num_nodes)
         nh = int(ni * bottle_scale)
         strides = [1 if i==0 and not first_downsample else 2 for i in range(num_stages)]
-        folds = [1] + folds #[fold*exp**i for i in range(num_stages)]
+#         folds = [1] + folds #[fold*exp**i for i in range(num_stages)]
 
         self.stem = Stem(c_in, no=ni) # , deep_stem
 
         units = []
         for i, (nu, stride) in enumerate(zip(num_nodes, strides)):
             for j in range(nu):
-                if j == 0: # the first node(layer) of each stage
-                    units += [ExpandBlock(Unit, ni, fold1 = folds[i], fold2=folds[i+1], stride=stride, nh=nh, **kwargs)]
+                if j == 0 and i != 0: # the first node(layer) of each stage
+                    units += [ExpandBlock(Unit, ni, fold1 = folds[i-1], fold2=folds[i], stride=stride, nh=nh, **kwargs)]
                 else:
-                    units += [LookbackBlock(Unit, ni, fold=folds[i+1], stride=1, nh=nh, **kwargs)]
+                    units += [LookbackBlock(Unit, ni, fold=folds[i], stride=1, nh=nh, **kwargs)]
 
         self.units = nn.ModuleList(units)
 
@@ -83,7 +83,7 @@ class LookbackNet(nn.Module):
 
     def forward(self, x):
         x = self.stem(x)
-        xs = [x]
+        xs = [x] * self.folds[0]
         for unit in self.units:
             xs = unit(*xs)
         if self.tail_all:
